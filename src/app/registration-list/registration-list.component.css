@@ -1,0 +1,46 @@
+
+ul.secondary-menu{
+    float:right;
+    display:block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+ul.secondary-menu li a{
+    color: #fff;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+}
+ul.secondary-menu li a:hover{
+    text-decoration:none;
+    color:#f8f8f8;
+}
+
+ul.secondary-menu li a:focus{
+    text-decoration:none;
+    color: #fcf683;
+   
+}
+
+#employerData .table-bordered > tbody > tr > td,
+#employerData .table-bordered > tbody > tr > th,
+#employerData .table-bordered > tfoot > tr > td,
+#employerData .table-bordered > tfoot > tr > th,
+#employerData .table-bordered > thead > tr > td,
+#employerData .table-bordered > thead > tr > th {
+    border-right: 1px solid #ddd !important;
+    border-left: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+#recruiterData .table-bordered > tbody > tr > td,
+#recruiterData .table-bordered > tbody > tr > th,
+#recruiterData .table-bordered > tfoot > tr > td,
+#recruiterData .table-bordered > tfoot > tr > th,
+#recruiterData .table-bordered > thead > tr > td,
+#recruiterData .table-bordered > thead > tr > th {
+    border-right: 1px solid #ddd !important;
+    border-left: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+}

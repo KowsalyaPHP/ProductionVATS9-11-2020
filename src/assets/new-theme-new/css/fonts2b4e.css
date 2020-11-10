@@ -1,0 +1,113 @@
+/* ------------------------------------------------------------ *\
+    Fonts
+\* ------------------------------------------------------------ */
+
+@font-face {
+    font-family: 'Volte';
+    src: url('fotns/volte-italic-webfont.html');
+    src: url('fotns/volte-italic-webfontd41dd41d.html?#iefix') format('embedded-opentype'),
+         url('fotns/volte-italic-webfont-2.html') format('woff'),
+         url('fotns/volte-italic-webfont-3.html') format('truetype'),
+         url('fotns/volte-italic-webfont-4.html#volte-italicregular') format('svg');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Volte';
+    src: url('fonts/3032D4_3_0.eot');
+    src: url('fonts/3032D4_3_0d41dd41d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/3032D4_3_0.woff') format('woff'),
+         url('fonts/3032D4_3_0.html') format('truetype'),
+         url('fonts/3032D4_3_0-2.html') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Volte';
+    src: url('fonts/3032D4_2_0.eot');
+    src: url('fonts/3032D4_2_0d41dd41d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/3032D4_2_0.woff') format('woff'),
+         url('fonts/3032D4_2_0.html') format('truetype'),
+         url('fonts/3032D4_2_0-2.html') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Volte';
+    src: url('fonts/3032D4_4_0.eot');
+    src: url('fonts/3032D4_4_0d41dd41d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/3032D4_4_0.woff') format('woff'),
+         url('fonts/3032D4_4_0.html') format('truetype'), 
+         url('fonts/3032D4_4_0-2.html') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cassia';
+    src: url('fonts/3032D4_1_0.eot');
+    src: url('fonts/3032D4_1_0d41dd41d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/3032D4_1_0.woff') format('woff'),
+         url('fonts/3032D4_1_0.html') format('truetype'),
+         url('fonts/3032D4_1_0-2.html') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cassia';
+    src: url('fonts/cassiaw01-extralightitalic-webfont.eot');
+    src: url('fonts/cassiaw01-extralightitalic-webfontd41dd41d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/cassiaw01-extralightitalic-webfont.woff') format('woff'),
+         url('fonts/cassiaw01-extralightitalic-webfont.html') format('truetype'),
+         url('fonts/cassiaw01-extralightitalic-webfont-2.html#cassiaw01-extralightitalicRg') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2 ){
+	@font-face {
+        font-family: 'Volte';
+        src: url('fotns/volte-italic-webfont-4.html#volte-italicregular') format('svg');
+        font-weight: 400;
+        font-style: italic;
+    } 
+
+    @font-face {
+        font-family: 'Volte';
+        src: url('fonts/3032D4_3_0-2.html') format('svg');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Volte';
+        src: url('fonts/3032D4_2_0-2.html') format('svg');
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Volte';
+        src: url('fonts/3032D4_4_0-2.html') format('svg');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'Cassia';
+        src: url('fonts/3032D4_1_0-2.html') format('svg');
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Cassia';
+        src: url('fonts/cassiaw01-extralightitalic-webfont-2.html#cassiaw01-extralightitalicRg') format('svg');
+        font-weight: 300;
+        font-style: italic;
+    }
+}

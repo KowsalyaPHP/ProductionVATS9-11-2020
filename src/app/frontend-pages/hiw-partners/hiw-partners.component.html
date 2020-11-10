@@ -1,0 +1,301 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar nav-transparent">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a id="hiwPartner" [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a></li>
+        <li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+        <ng-template #showLogin>
+          <li> <a [routerLink]="['/login']">Login</a></li>
+        </ng-template>
+        <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <!-- home wrapper -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="header-banner-heading wow bounce">Welcome to accessing 1000’s of Jobs with Leading Global and
+            Indian firms</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+<!-- how it works -->
+<div id="how-it-works" class="section md-padding bg-grey">
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="row">
+
+      <!-- Section header -->
+      <div class="section-header text-center">
+        <h2 class="title wow fadeIn">HOW IT WORKS</h2>
+        <!-- <p style="font-size: 19px;">( Large Corporate Entity / A Manufacturing or services entity / SME )</p> -->
+        <P class="wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s" style="font-size: 27px;">Welcome to
+          accessing 1000’s of Jobs with Leading Global and Indian firms</P>
+      </div>
+      <!-- /Section header -->
+
+      <div class="features-sample col-md-12 no-padding" style="margin-top:30px;">
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><i class="fa fa-money"></i></div>
+            <h4 class="title"><a href="">- No Business Development Cost</a></h4>
+            <p class="description">Stop hunting for new business!! We have 1000’s of open positions!!.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><i class="fa fa-wpexplorer"></i></div>
+            <h4 class="title"><a href="">- No Empanelment hassles</a></h4>
+            <p class="description">Why waste your time on empanelment!! We’ll do the needfull.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><i class="fa fa-universal-access"></i></div>
+            <h4 class="title"><a href="">- Access to companies otherwise impossible to reach</a></h4>
+            <p class="description">Chance to work with the top corporate clients!!.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><i class="fa fa-map-o"></i></div>
+            <h4 class="title"><a href="">- Pan India Client Access</a></h4>
+            <p class="description">Looking for clients specific to a region!!Don’t worry We have Clients from all over
+              India!!</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-12" style="float:none; margin:auto; text-align:center;">
+
+        <a [routerLink]="['/recruiter']" class="btn btn-lg btn-custom" role="button">Join us now !</a>
+
+      </div>
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /how it works -->
+
+
+
+<div id="flow-chart" class="section md-padding ">
+
+  <!-- Container -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 flowchart" style="text-align:center;">
+        <!-- <iframe src="//my.visme.co/embed/q6r8n4mw-untitled-project" height="797" width="800" style="border: 0px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
+        <iframe src="//my.visme.co/embed/76oxy1py-untitled-project" height="1547" width="800" style="border: 0px;"
+          webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<div id="look-for-hot-jobs" class="section md-padding bg-grey" style="padding-bottom:0px;">
+
+  <!-- Container -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-4 features-img">
+        <img src="assets/frontend-style-script/img/product-features-1.png" alt="" class="wow fadeInLeft">
+      </div>
+
+
+      <div class="col-lg-8 col-md-8">
+        <div class="section-header wow fadeIn" data-wow-duration="1s">
+          <h3 class="section-title">What's in it for our Recruitment Vendor Partners</h3>
+          <span class="section-divider"></span>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-8 col-md-8 ">
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6 box wow fadeInRight">
+            <div class="icon"><i class="fa fa-handshake-o"></i></div>
+            <h4 class="title"><a href="">Loyalty Program</a></h4>
+            <p class="description">Recruiters can generate points for site activity, submittals, interviews, &
+              placements, which can be redeemed for cool merchandise & experience rewards, such as special activities &
+              outings.</p>
+          </div>
+          <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.1s">
+            <div class="icon"><i class="fa fa-trophy"></i></div>
+            <h4 class="title"><a href="">Best Recruiter Awards</a></h4>
+            <p class="description">Chance to win the Best Recruiter Award if you close the most no. of positions!!</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.2s">
+            <div class="icon"><i class="fa fa-gift"></i></div>
+            <h4 class="title"><a href="">Gifts and Lucky draws</a></h4>
+            <p class="description">Performance based gifts and lucky draws to make sure your hard work pays off. </p>
+          </div>
+          <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.3s">
+            <div class="icon"><i class="fa fa-usd"></i></div>
+            <h4 class="title"><a href="">Bonus Fees(upto 3x fees!!)</a></h4>
+            <p class="description">Bonus to Recruitment vendor partners on closing positions faster!!!</p>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+
+<!-- Portfolio -->
+<div id="short-note" class="section sm-padding">
+  <!-- Background Image -->
+  <div class="bg-img-company-reg wow fadeIn"
+    style="background-image: url('assets/frontend-style-script/img/gifts_bonus.jpg');">
+    <div class="overlay"></div>
+  </div>
+  <!-- /Background Image -->
+  <!-- Container -->
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="features-sample row">
+
+      <div class="col-lg-8 col-md-8 wow flipInX" data-wow-delay=".7s">
+        <h3 class="dark-bg-heading" style="text-align:left;">Emagine+ Redefines Vendor Partnership</h3>
+
+        <p class="subscription-plan">
+          An Exclusive subscription program for selected vendors!! Get Access to jobs exclusively for you!!Limited seats
+          available!!! Join Now!!!
+
+        </p>
+      </div>
+
+      <div id="signup-subscription" class="col-lg-4 col-md-4">
+        <div class="box featured wow fadeInUp" style="height:auto; visibility: visible; animation-name: fadeInUp;">
+          <h3 style="margin-top: 0;margin-bottom: 30px;">Signup- Subscription</h3>
+          <h5><sup><i class="fa fa-inr"></i></sup>20k/month<span> for 2 years</span></h5>
+          <ul>
+            <li><i class="ion-android-checkmark-circle"></i> Get back 7k Extra Bonus for first 3 placements</li>
+            <li><i class="ion-android-checkmark-circle"></i> 5k bonus for next 2 placements</li>
+            <li><i class="ion-android-checkmark-circle"></i> Priority access to jobs exclusively for you</li>
+            <li><i class="ion-android-checkmark-circle"></i> Free ATS to manage your business</li>
+            <li><i class="ion-android-checkmark-circle"></i> Free Printed Business cards</li>
+            <li><i class="ion-android-checkmark-circle"></i> Free Job Boards access</li>
+          </ul>
+          <a [routerLink]="['/recruiter']" class="get-started-btn">Get Started</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /short-note -->
+
+<div id="signup-subscription-0" class="section lg-padding bg-grey">
+
+  <!-- Container -->
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-md-10" style="float:none; margin:auto; text-align:center;">
+        <h3 class="sub-heading-title">Don’t wait!!</h3>
+        <h1 class="main-heading-title">Be a part of India’ Smartest Recruitment Marketplace Now!!</h1>
+
+        <a [routerLink]="['/contact']" class="btn btn-lg btn-custom" role="button">CONTACT US</a>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>

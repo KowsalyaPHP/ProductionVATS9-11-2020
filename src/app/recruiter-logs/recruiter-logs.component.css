@@ -1,0 +1,14 @@
+.recruitermx-table {
+  width: 100%;
+  padding: 20px;
+}
+
+.recruitermx-table td {
+  padding: 10px;
+}
+
+#jobTable th,
+#recruiterTable td {
+  vertical-align: middle;
+  text-align: center;
+}

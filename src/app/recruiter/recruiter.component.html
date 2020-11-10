@@ -1,0 +1,294 @@
+<!-- Header -->
+<header id="recruiter-page">
+
+ <!-- fog -->
+ <div id="foglayer_01" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+</div>
+<div id="foglayer_02" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+</div>
+ <div id="foglayer_03" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+</div>
+<!-- fog -->
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+  
+            <div class="row">
+                <div class="col-md-7 col-sm-5 hidden-xs">
+                        <h2 class="header-banner-heading">Great to see you here</h2>
+                        <p class="header-banner-sub-heading">Create an Emagine recruiter account to browse all the jobs</p>
+                        
+                    <!--Animated Icons for background-->
+                    <img src="assets/frontend-style-script/img/shape1.svg" alt="" class="object1 rotate"> 
+                    <img src="assets/frontend-style-script/img/shape2.svg" alt="" class="object2 rotate2"> 
+                    <img src="assets/frontend-style-script/img/shape3.svg" alt="" class="object3 rotate"> 
+                    <img src="assets/frontend-style-script/img/shape4.svg" alt="" class="object4 bounce bounce1"> 
+                    <img src="assets/frontend-style-script/img/shape5.svg" alt="" class="object5 bounce bounce2"> 
+                    <img src="assets/frontend-style-script/img/shape6.svg" alt="" class="object6 bounce bounce3"> 
+                    <img src="assets/frontend-style-script/img/shape7.svg" alt="" class="object7 bounce bounce4"> 
+                    <img src="assets/frontend-style-script/img/shape8.svg" alt="" class="object8 bounce bounce5">
+                    
+                    
+                    
+                    </div>
+
+                 <div class="col-md-5 col-sm-7 pull-right">
+
+                    <div class="card rounded-0 login-form effect2">
+                        <div class="card-header">
+                            <h3 class="mb-0" style="margin-top:0px; text-align:right; font-size: 18px;"><small>Already a member?<a target="_top" [routerLink]="['/login']"> Sign In</a></small></h3>
+                        </div>
+                        <div class="card-body recruiter-form">
+                            <form class="form customer-reg-form" role="form" autocomplete="off" id="recruiterLogin" novalidate="" method="" style="padding-bottom: 10px; border-bottom: 1px solid #eee;" [formGroup]="recruiterForm" (submit)='addRecRegDetails(recruiterForm.value)'>
+                  
+                                <div class="alert alert-success" role="alert" style="display:none;">
+                                    <strong>Well done!</strong> You successfully read this important alert message.
+                                </div>
+                              
+                                <div class="alert alert-danger" role="alert" style="display:none;">
+                                  <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                                </div>        
+                              
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Company Name" class="form-control form-control-lg rounded-0" formControlName="company_name" id="company_name" required="">
+                                            <div *ngIf="company_name.invalid && (company_name.dirty || company_name.touched)" class="invalid-feedback">
+                                              <div *ngIf="company_name.errors.required"> Company Name Is Required. </div>
+                                            </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="City" class="form-control form-control-lg rounded-0" formControlName="city" id="city" required="">
+                                            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="invalid-feedback">
+                                              <div *ngIf="city.errors.required"> City Is Required. </div>
+                                              <div *ngIf="city.errors?.pattern"> Enter Valid city </div>
+                                            </div>
+                                          </div>
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Address" class="form-control form-control-lg rounded-0" formControlName="company_address" id="company_address" required="">
+                                            <div *ngIf="company_address.invalid && (company_address.dirty || company_address.touched)" class="invalid-feedback">
+                                              <div *ngIf="company_address.errors.required"> Company Address Is Required. </div>
+                                            </div>
+                                          </div>
+                                    </div> -->
+
+                                 <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Company Website" class="form-control form-control-lg rounded-0 optional" formControlName="company_website" id="company_website">
+                                        </div>
+                                    </div> -->
+                                  
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Team Size" class="form-control form-control-lg rounded-0" formControlName="team_size" id="team_size" required="">
+                                            <div *ngIf="team_size.invalid && (team_size.dirty || team_size.touched)" class="invalid-feedback">
+                                                <div *ngIf="team_size.errors.required"> Team Size Is Required. </div>
+                                            </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Specialised Sector" class="form-control form-control-lg rounded-0" formControlName="specialised_sector" id="specialised_sector" required="">
+                                            <div *ngIf="specialised_sector.invalid && (specialised_sector.dirty || specialised_sector.touched)" class="invalid-feedback">
+                                                <div *ngIf="specialised_sector.errors.required"> Specialised Sector Is Required. </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Company Registration Number" class="form-control form-control-lg rounded-0" formControlName="registration_number" id="registration_number" required="">
+                                            <div *ngIf="registration_number.invalid && (registration_number.dirty || registration_number.touched)" class="invalid-feedback">
+                                                <div *ngIf="registration_number.errors.required"> Registration Number Is Required. </div>
+                                                <div *ngIf="registration_number.errors?.pattern"> Enter valid 21 Char length number. </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="GST Number (If any)" class="form-control form-control-lg rounded-0 optional" formControlName="GST_number" id="GST_number">
+                                         </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Owner of the firm" class="form-control form-control-lg rounded-0" formControlName="owner_name" id="owner_name" required="">
+                                               <div *ngIf="owner_name.invalid && (owner_name.dirty || owner_name.touched)" class="invalid-feedback">
+                                                    <div *ngIf="owner_name.errors.required"> Owner Name Is Required. </div>
+                                                </div>
+                                              </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                      
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Owners Email Id" class="form-control form-control-lg rounded-0" formControlName="email" id="email" required="">
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                            <div *ngIf="email.errors.required"> Email Is Required. </div>
+                                            <div *ngIf="email.errors?.pattern"> Enter Valid Email </div>
+                                        </div>
+                                        </div>
+                                 </div>                                  
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="number"  placeholder="Owners Mobile Number" class="form-control form-control-lg rounded-0" formControlName="contact_number" id="contact_number" required="">
+                                            <div *ngIf="contact_number.invalid && (contact_number.dirty || contact_number.touched)" class="invalid-feedback">
+                                                <div *ngIf="contact_number.errors.required"> Enter Valid Mobile Number </div>
+                                                <div *ngIf="contact_number.errors.max">Mobile Number should be of 10 digits</div>
+                                                <div *ngIf="contact_number.errors.min">Mobile Number should be of 10 digits</div>
+                                              </div>
+                                          </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text"  placeholder="SPOC Mobile Number" class="form-control form-control-lg rounded-0 optional" formControlName="SPOC_mobile_number" id="SPOC_mobile_number">
+                                            <div *ngIf="SPOC_mobile_number.invalid && (SPOC_mobile_number.dirty || SPOC_mobile_number.touched)" class="invalid-feedback">
+                                                <div *ngIf="SPOC_mobile_number.errors.max">Mobile Number should be of 10 digits</div>
+                                                <div *ngIf="SPOC_mobile_number.errors.min">Mobile Number should be of 10 digits</div>
+                                                <div *ngIf="SPOC_mobile_number.errors?.pattern"> Enter Valid Mobile Number </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="SPOC Name" class="form-control form-control-lg rounded-0 optional" formControlName="SPOC_name" id="SPOC_name">
+                                           <div *ngIf="SPOC_name.invalid && (SPOC_name.dirty || SPOC_name.touched)" class="invalid-feedback">
+                                                <div *ngIf="SPOC_name.errors?.pattern"> Enter Valid Name </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" placeholder="SPOC Email Id" class="form-control form-control-lg rounded-0 optional" formControlName="SPOC_email" id="SPOC_email">
+                                            <div *ngIf="SPOC_email.invalid && (SPOC_email.dirty || SPOC_email.touched)" class="invalid-feedback">
+                                                <div *ngIf="SPOC_email.errors?.pattern"> Enter Valid Email </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" placeholder="password" class="form-control form-control-lg rounded-0" id="password" formControlName="password" required="" autocomplete="new-password">
+                                           <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                                                <div *ngIf="password.errors.required"> Password Is Required. </div>
+                                           </div>
+                                          </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Confirm password" class="form-control form-control-lg rounded-0" formControlName="confirm_password" id="confirm_password" required="" autocomplete="new-password">
+                                            <div *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)" class="invalid-feedback">
+                                                <div *ngIf="confirm_password.errors.required"> Confirm Password Is Required. </div>
+                                              </div>
+                                            <div *ngIf="password_not_match" class="invalid-feedback">{{password_not_match}}</div>
+                                          </div>
+                                    </div> -->
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                              <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input">
+                                                <a href="#" target="_blank" class="terms-condition">I agree to the terms and conditions</a>
+                                              </label>
+                                            </div>
+                                          </div>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                        <button type="submit" [disabled]="recruiterForm.invalid" class="btn btn-danger" id="btnLogin" style="width:100%; border-radius: 0px; padding: 9px 12px; " >Register</button>
+                                        <img id="loader" name="loader" src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader" style="width: 42px;margin:0px auto;display:none;">
+                                    </div>
+                                   
+                                </div>
+                              </form>	
+
+                         </div>
+                         
+                    </div>
+                   
+
+
+
+                 </div>
+
+            </div>
+        
+    </div>
+    <!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+<button type="button" #openRecruiterModal id="openRecruiterModal" style="display:none;" class="btn btn-info btn-lg"
+        data-toggle="modal" data-target="#recruiterModal">Open Modal</button>
+
+<div class="modal fade" id="recruiterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" (click)="redirectToHomePage();">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Registerd Successfully</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="redirectToHomePage();">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			<p>Our Team will get back to you.<br>
+				Thank You!</p>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="redirectToHomePage();">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>

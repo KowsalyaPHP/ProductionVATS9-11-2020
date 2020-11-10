@@ -1,0 +1,296 @@
+<!-- Header -->
+<header id="category-logs-page">
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo" />
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo" />
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown">
+          <a [routerLink]="['/how-it-work']">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li>
+              <a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a>
+            </li>
+            <li>
+              <a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a>
+            </li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li><a (click)="logout()" style="cursor:pointer;">Log Out</a></li>
+      </ul>
+      <!-- /Main navigation -->
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf="usrtype == 'Admin'">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-right: 5px;">
+          <ul class="secondary-menu">
+            <li>
+              <a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/employerlist']">Registered Employers</a>
+            </li>
+            <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+            <!-- <li><a [routerLink]="['/job-details']">Jobs List</a></li>  -->
+            <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li>
+            <li>
+              <a style="color: #fcf683;" [routerLink]="['/category-logs']">Category Logs</a>
+            </li>
+            <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+            <li><a [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+            <!-- <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+<!-- /Header -->
+
+<!-- About -->
+<div id="feature-details" class="section xs-padding feature-list bg-grey-dark">
+  <!-- Container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 style="text-align:left; margin:20px 0px; font-size:21px;">
+          Job Category Logs
+        </h3>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:50px;">
+      <div class="col-md-12 tab-dashboard">
+        <div class="panel" style="margin-bottom:80px;">
+          <header class="panel-heading tab-bg-dark-navy-blue" style="margin-top: -55px;">
+            <ul class="nav nav-tabs" style="margin-bottom:0px;">
+              <li class="active">
+                <a href="#1" data-toggle="tab">Category Logs</a>
+              </li>
+            </ul>
+          </header>
+          <div class="panel-body">
+            <div class="col-md-12">
+              <div id="exTab2" class="">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="1">
+                    <h3 style="padding:20px;margin-top: -15px;font-size: 18px;">
+                      Category Logs
+                    </h3>
+
+                    <div class="col-md-12">
+                      <table id="categoryLogTable" *ngIf="categoryLogssArr != []"
+                        class="table table-striped table-bordered table-hover table-client-dashboard"
+                        style="width:100%">
+                        <thead>
+                          <tr>
+                            <th style="display:none">id</th>
+                            <th>Compny Name</th>
+                            <th>Job Title</th>
+                            <th>Job Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Comment</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of categoryLogssArr">
+                            <td style="display:none">
+                              <input value="{{ item.id }}" />
+                            </td>
+                            <td>{{ item.compnyname }}</td>
+                            <td>{{ item.openTitle }}</td>
+                            <td>{{ item.job_type }}</td>
+                            <td>{{ item.start_date }}</td>
+                            <td>{{ item.end_date }}</td>
+                            <td>{{ item.comment }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Row2 -->
+  </div>
+
+  <div>
+    <ng-template #maxcountupdatemodal let-modal>
+      <div class="modal-body">
+        <div>
+          <table>
+            <tr>
+              <td>Company</td>
+              <td>{{ mcCompanyName }}</td>
+            </tr>
+            <tr>
+              <td>Job</td>
+              <td>{{ mcJobTitle }}</td>
+            </tr>
+            <tr>
+              <td>
+                <label>Max Count</label>
+              </td>
+              <td>
+                <input type="number" [(ngModel)]="mxMaxCount" class="form-control" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Max Count / Recruiter</label>
+              </td>
+              <td>
+                <input type="number" [(ngModel)]="mxMaxCountPerRecruiter" class="form-control" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="updateMaxCount()">
+          Submit
+        </button>
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
+          Cancel
+        </button>
+      </div>
+    </ng-template>
+  </div>
+  <!-- /Container -->
+</div>
+<!-- /About -->
+
+<!-- Footer -->
+<footer id="footer" class="footer sm-padding bg-dark">
+  <!-- Container -->
+  <div class="container">
+    <!-- Row -->
+    <div class="row">
+      <div class="wow fadeIn col-md-3" data-wow-duration="1s" data-wow-delay="1s">
+        <p>
+          <img src="assets/frontend-style-script/img/logo-white.png" alt="" style="width: 135px;" />
+        </p>
+        <p>
+          Emagine is a subsidiary firm of EMA Partners India – member of EMA
+          Partners International – one of the world’s leading retained executive
+          search firms with 50 offices across 37 countries and more than 200
+          well-qualified & experienced consultants.
+          <a href="about-us.html">Readmore..</a>
+        </p>
+
+        <!-- footer follow -->
+        <ul class="footer-follow">
+          <li>
+            <a target="_blank" href="https://www.facebook.com/emagine.co.in"><i class="fa fa-facebook"></i></a>
+          </li>
+          <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
+          <li>
+            <a [routerLink]="['/contact']"><i class="fa fa-whatsapp"></i></a>
+          </li>
+          <li>
+            <a target="_blank"
+              href="https://www.linkedin.com/company/emagine-people-solutions-pvt-ltd/?originalSubdomain=in"><i
+                class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
+        <!-- /footer follow -->
+      </div>
+
+      <div class="wow fadeIn col-md-3" data-wow-duration="1.2s" data-wow-delay="1.2s">
+        <h3>For Employer</h3>
+        <ul class="footer-menu-list-items">
+          <li class="menu-list-item">
+            <span class="menu-list-text">All Jobs</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">All Categories</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">Companies</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">My Account</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="wow fadeIn col-md-3" data-wow-duration="1.3s" data-wow-delay="1.4s">
+        <h3>For Recruiter</h3>
+        <ul class="footer-menu-list-items">
+          <li class="menu-list-item">
+            <span class="menu-list-text">All Jobs</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">All Categories</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">Companies</span>
+          </li>
+          <li class="menu-list-item">
+            <span class="menu-list-text">My Account</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="wow fadeIn col-md-3" data-wow-duration="1.3s" data-wow-delay="1.6s">
+        <h3>Emagine In News</h3>
+        <ul class="footer-menu-list-items">
+          <li class="menu-list-item">
+            <a target="_blank"
+              href="https://economictimes.indiatimes.com/news/company/corporate-trends/ema-partners-launches-its-brand-emagine-in-india/articleshow/62993236.cms"><span
+                class="menu-list-text">EMA Partners launches its brand Emagine in India</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row -->
+    <div class="row">
+      <div class="col-md-12  wow fadeIn" style="margin-top:20px;">
+        <!-- footer copyright -->
+        <div class="footer-copyright">
+          <p>Copyright © 2019. All Rights Reserved.</p>
+        </div>
+        <!-- /footer copyright -->
+      </div>
+    </div>
+    <!-- /Row -->
+  </div>
+  <!-- /Container -->
+</footer>
+<!-- /Footer -->
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

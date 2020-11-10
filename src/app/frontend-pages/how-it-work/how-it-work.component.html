@@ -1,0 +1,371 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+	<!-- Nav -->
+	<nav id="nav" class="navbar nav-transparent">
+		<div class="container">
+
+			<div class="navbar-header">
+				<!-- Logo -->
+				<div class="navbar-brand">
+					<a href="index.html">
+						<img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+						<img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<!-- Collapse nav button -->
+				<div class="nav-collapse">
+					<span></span>
+				</div>
+				<!-- /Collapse nav button -->
+			</div>
+
+			<!--  Main navigation  -->
+			<ul class="main-nav nav navbar-nav navbar-right">
+				<li><a [routerLink]="['/']">Home</a></li>
+				<li class="has-dropdown"><a [routerLink]="['/how-it-work']">How it works</a>
+					<ul class="dropdown" style="position:absolute;">
+						<li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+						<li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+					</ul>
+				</li>
+				<li><a [routerLink]="['/about-us']">About</a></li>
+				<li><a [routerLink]="['/contact']">Contact</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a>
+				</li>
+				<li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+				<ng-template #showLogin>
+					<li> <a [routerLink]="['/login']">Login</a></li>
+				</ng-template>
+				<li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a>
+				</li>
+			</ul>
+			<!-- /Main navigation -->
+
+		</div>
+	</nav>
+	<!-- /Nav -->
+
+	<!-- home wrapper -->
+	<div class="home-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="header-banner-heading wow bounce">India’s Largest and Most Advanced Recruitment
+						Marketplace</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+
+<!-- how it works -->
+<div id="how-it-works" class="section md-padding bg-grey">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+
+			<!-- Section header -->
+			<div class="section-header text-center">
+				<h2 class="title">How it works</h2>
+				<p>Find Job, Employment and Career Opportunities.</p>
+			</div>
+			<!-- /Section header -->
+
+			<!-- about -->
+			<div class="col-md-4">
+				<div class="about how-it-works-one">
+					<i class="fa fa-laptop" style="background:#2a80b9;"></i>
+					<h3>Register an account</h3>
+					<p>Post a job to tell us about your projects. We will quickly match your profile with the right
+						company.</p>
+
+				</div>
+			</div>
+			<!-- /about -->
+
+			<!-- about -->
+			<div class="col-md-4">
+				<div class="about how-it-two">
+					<i class="fa fa-search" style="background:#16a086;"></i>
+					<h3>Specify & Search your job</h3>
+					<p>Browse profiles, reviews, proposals then interview top candidates. Hire a favorite & begin your
+						work.</p>
+
+				</div>
+			</div>
+			<!-- /about -->
+
+			<!-- about -->
+			<div class="col-md-4">
+				<div class="about">
+					<i class="fa fa-magic" style="background:#e77e23;"></i>
+					<h3>Apply for a job</h3>
+					<p>Use this platform to share resumes of a candidates & get your work done from your desktop or on
+						the go.</p>
+
+				</div>
+			</div>
+			<!-- /about -->
+
+		</div>
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /how it works -->
+
+
+<!-- Portfolio -->
+<div id="short-note" class="section md-padding">
+	<!-- Background Image -->
+	<div class="bg-img-company-reg"
+		style="background-image: url('assets/frontend-style-script/img/Image-Background-2.png');">
+		<div class="overlay"></div>
+	</div>
+	<!-- /Background Image -->
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+
+
+			<div class="col-md-10 short-note-works">
+				<p>We at Emagine, offer total outsourcing of your recruitment, so that you can focus on your business
+					priorities and Increasing your competitive advantage by aligning strategy with people and culture.
+				</p>
+
+			</div>
+
+		</div>
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /short-note -->
+
+<!-- About -->
+<div id="feature-details" class="section md-padding feature-list">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center">
+				<h2 class="title">HOT JOBS</h2>
+
+			</div>
+			<!-- /Section header -->
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-7">
+				<h3 class="feature-title">1. Feature</h3>
+
+				<ul class="feature-list-items">
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">India’s largest Marketplace</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">India’s most technology enabled marketplace</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Most diverse across all industry sectors</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Across all geographies – Covering 21 states and 100+
+							locations</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Across all Salary levels from entry level to Mid-Senior
+							Management</span>
+					</li>
+
+				</ul>
+
+			</div>
+
+			<div class="col-md-5">
+				<p>
+					<img src="assets/frontend-style-script/img/thefunky.png" style="width:100%;" />
+				</p>
+			</div>
+
+		</div>
+		<!-- /Row1 -->
+
+		<div class="row" style="margin-top:70px;">
+			<div class="col-md-5">
+				<p>
+					<img src="assets/frontend-style-script/img/old.jpg" style="width:100%;" />
+				</p>
+			</div>
+
+			<div class="col-md-7">
+				<h3 class="feature-title">2. BENEFITS TO YOU</h3>
+
+				<ul class="feature-list-items">
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Single Sign-on access to Hundreds of Vendors.</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">No empanelment worries for you – Emagine empanels the
+							vendors.</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">No Bill processing and Payment worries for you – Emagine
+							processes and Pays.</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Standard rates across vendors.</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Resume Matching and ranking of resumes.</span>
+					</li>
+
+					<li class="feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Just leave the vendor processing to us- we ensure fastest
+							delivery at the most optimal cost.</span>
+					</li>
+
+				</ul>
+			</div>
+
+		</div>
+		<!-- /Row2 -->
+
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /About -->
+
+<!-- About -->
+<div id="tranding-industry" class="section md-padding ">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center" style="margin-bottom: 33px;">
+				<p style="text-align:center;"><img src="assets/frontend-style-script/img/logo.png"
+						style="width:200px;" /></p>
+				<h2 class="title" style="font-size:26px; font-weight:500;">Indian's Most Advanced Vendor Marketplace -
+					Emagine - Xplore</h2>
+			</div>
+			<!-- /Section header -->
+		</div>
+
+		<div class="row">
+			<div class="col-md-12" style="text-align:center;">
+				<img src="assets/frontend-style-script/img/xplore-vendor.jpg" style="width:60%; margin:auto;" />
+			</div>
+
+		</div>
+		<!-- /Row1 -->
+
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /About -->
+
+
+<!-- Numbers -->
+<div id="work-together" class="section lg-padding">
+
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+
+			<div class="col-md-12" style="text-align:center;">
+				<h3 class="sub-heading-title">Let's we</h3>
+				<h1 class="main-heading-title">Work together!</h1>
+
+				<a href="#" class="btn btn-lg btn-custom" role="button">
+					CONTACT US
+				</a>
+			</div>
+
+		</div>
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /Numbers -->
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

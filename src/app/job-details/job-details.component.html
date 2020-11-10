@@ -1,0 +1,884 @@
+<!-- Header -->
+<header id="registration-list-page" class="sub-menus">
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+        <!-- <li><a [routerLink]="['/employerlist']">Employer List</a></li> -->
+        <li *ngIf="loggedIn ; else showLogin;">
+          <a [routerLink]="['/logout']">Logout</a>
+        </li>
+        <ng-template #showLogin>
+          <li>
+            <a [routerLink]="['/login']">Login</a>
+          </li>
+        </ng-template>
+        <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf="usrtype == 'Admin'">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-right: 5px;">
+          <ul class="secondary-menu">
+            <li><a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li>
+            <li><a [routerLink]="['/employerlist']">Registered Employers</a></li>
+            <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+            <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li>
+            <li><a [routerLink]="['/category-logs']">Category Logs</a></li>
+            <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+            <li><a [routerLink]="['/ratecard']">Rate Card</a></li>
+            <!-- <li><a style="color: #fcf683;" [routerLink]="['/job-details']">Jobs List</a></li> 
+                      <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</header>
+<!-- /Header -->
+
+
+<!-- feature-details -->
+<div id="feature-details" class="section md-padding bg-grey-dark">
+
+  <!-- Container -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 style="text-align:left; margin:-33px 0px; font-size:22px;">Jobs List</h3>
+      </div>
+      <div class="col-lg-6">
+        <h6 *ngIf="pipelineUpdatedOn" style="text-align:right; margin:-20px 0px;">Pipeline Updated On:
+          {{ pipelineUpdatedOn }}</h6>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+        <div class="panel filter-collapsible">
+          <div class="panel-body">
+            <div class="panel-group" id="accordion">
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseeight">
+                      <span class=""> Requisition Id </span> <span id="reqIdClearDot" name="reqIdClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="reqIdClear" name="reqIdClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('openingId')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapseeight" class="{{collapseClsReqId}}">
+                  <div class="panel-body">
+                    <div class="search-filter-category">
+                      <input type="text" id="reqId" name="reqId" #reqId style="width:120px;height:25px;" />
+                      <button (click)="createFilterData(reqId.value,true,'openingId')" id="reqIdSearch"
+                        name="reqIdSearch"> Search </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseseven">
+                      <span class=""> Job Category </span> <span id="jobCatClearDot" name="jobCatClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="jobCatClear" name="jobCatClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('hotJobs')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapseseven" class="{{collapseClsHotJobs}}">
+                  <div class="panel-body">
+
+                    <div class="search-filter-category">
+
+                      <ul class="listing-jobs">
+                        <li *ngFor="let hotJobFilterData of hotJobFilter">
+                          <span class="radio">
+                            <label><input *ngIf="hotJobFilterData.job_type=='Hot Job' ; else jobcatChk;" type="checkbox"
+                                id="jobCat" name="jobCat" [checked]='chkHotJob'
+                                (click)="searchByFilter(hotJobFilterData.job_type,$event,'JobCategory')"
+                                [value]="hotJobFilterData.job_type" />
+                              <ng-template #jobcatChk>
+                                <input type="checkbox" id="jobCat" name="jobCat"
+                                  (click)="searchByFilter(hotJobFilterData.job_type,$event,'JobCategory')"
+                                  [value]="hotJobFilterData.job_type" />
+                              </ng-template>
+                              {{hotJobFilterData.job_type}}
+                            </label>
+                          </span>
+
+                        </li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsefive">
+                      <span class=""> Company </span> <span id="compnynameClearDot" name="compnynameClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="compnynameClear" name="compnynameClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('compnyname')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapsefive" class="{{collapseClsComp}}">                
+                    <div class="md-form">
+                        <div class="input-group input-group-unstyled">
+                            <input type="text" class="form-control" placeholder="Search" name="searchText"  [(ngModel)]="searchText" id="companySearch"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>                                 
+                    </div>
+                    <div class="panel-body">
+                      <div class="search-filter-category">
+                        <ul class="listing-jobs">
+                          <li *ngFor="let jobData of companyFilter | filter:searchText">
+                            <span class="radio" >
+                              <label><input type="checkbox" id="jobData.compnyname"
+                               
+                                  (click)="searchByFilter(jobData.compnyname,$event,'compnyname')" />
+                                {{jobData.compnyname}}</label>
+                            </span>
+                          </li><!-- [checked]="check(checkFilterComp,jobData.compnyname)"-->
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                      <span class="">Minimum Salary</span> <span id="salaryClearDot" name="salaryClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="salaryClear" name="salaryClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('ctcBandLowEnd')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div class="search-filter-category">
+                      <div id="range_01" name="range_01" style="width:200px;"></div>
+                      <input type="text" id="salvalmin" name="salvalmin" [value]="salvalmin"
+                        (focus)="createFilterData('searchSalary',true,'ctcBandLowEnd')">
+                      <!-- <input type="text" id="salvalmax" name="salvalmax" [value]= "salvalmax" (focus)="createFilterData('searchSalary',true,'ctcBandLowEnd')"> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsesix">
+                      <span class=""> Career Stream </span> <span id="crStreamClearDot" name="crStreamClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="crStreamClear" name="crStreamClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('crStreamName')">clear</a>
+
+                  </h4>
+                </div>
+                <div id="collapsesix" class="{{collapseClsStream}}">
+                  <div class="panel-body">
+
+                    <div class="search-filter-category">
+
+                      <ul class="listing-jobs">
+                        <li *ngFor="let careerStreamData of careerStreamfilter">
+                          <span class="radio">
+                            <label><input type="checkbox"
+                                [checked]="check(checkFilterStream,careerStreamData.crStreamName)"
+                                (click)="searchByFilter(careerStreamData.crStreamName,$event,'crStreamName')" />
+                              {{careerStreamData.crStreamName}}</label>
+                          </span>
+
+                        </li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      <span class="">Location</span> <span id="localityClearDot" name="localityClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="localityClear" name="localityClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('address')">clear</a>
+
+                  </h4>
+                </div>
+                <div id="collapseOne" class="{{collapseClsLacality}}">
+                    <div class="md-form">
+                        <div class="input-group input-group-unstyled">
+                            <input type="text" class="form-control" placeholder="Search" name="searchLocation" [(ngModel)]="searchLocation" id="locationSearch"/>
+                            <span class="input-group-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>                                 
+                    </div>  
+                  <div class="panel-body">
+                    <div class="search-filter-category">
+
+                      <ul class="listing-jobs">
+                        <li *ngFor="let localityData of localityFilter | filter:searchLocation">
+                          <span class="radio">
+                            <label> <input type="checkbox"
+                                (click)="searchByFilter(localityData.address,$event,'address')" />
+                              {{localityData.address}}</label>
+                          </span>
+
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsefour">
+                      <span class=""> Job Type </span> <span id="jobTypeClearDot" name="jobTypeClearDot"
+                        class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="jobTypeClear" name="jobTypeClear"
+                      style="float:right; display:none; padding: 0px 10px; font-size: 12px;"
+                      (click)="clearFilter('employmentType')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapsefour" class="panel-collapse collapse">
+                  <div class="panel-body">
+
+                    <div class="search-filter-category">
+
+                      <ul class="listing-jobs">
+                        <li *ngFor="let jobTypeData of jobTypefilter">
+                          <span class="radio">
+                            <label> <input type="checkbox"
+                                (click)="searchByFilter(jobTypeData.employmentType,$event,'employmentType')" />
+                              {{jobTypeData.employmentType}}</label>
+                          </span>
+
+                        </li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9 filtered-view-listing">
+        <div id="loader" class="col-md-12">
+          <p style="text-align:center;"><img class="loading-img"
+              src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader"></p>
+        </div>
+        <div class="section-header text-center" id="NojobFound" style="display: none;">
+          <h2 class="wow slideInUp title">No Open Requisitions Available</h2>
+        </div>
+
+        <div class="row">
+
+          <!-- <span *ngIf="company_name" (click)="removefilter()">{{company_name}}</span> -->
+          <div class="col-md-12" *ngFor="let jobData of jobDtlsArr">
+            <div class="panel wow fadeInUp {{jobData['hotjobclass']}}" data-wow-duration=".5s" data-wow-delay=".7s">
+              <div class="panel-heading" style="float: left;height:50px;padding: 2px 3px 8px 15px !important;">
+                <span *ngIf="jobData.openPositions > 1 ; else jpositions;">
+                  <h4><u>{{jobData['openingId']}} - {{jobData['openTitle']}}</u> <span
+                      style="display: inline;font-size: 16px !important;">&nbsp;({{jobData['openPositions']}}
+                      Positions)</span></h4>
+                </span>
+                <ng-template #jpositions>
+                  <h4><u>{{jobData['openingId']}} - {{jobData['openTitle']}}</u>
+                    <h5 style="display: inline;font-size: 16px !important;">&nbsp;({{jobData['openPositions']}}
+                      Position)
+                    </h5>
+                  </h4>
+                </ng-template>
+              </div>
+
+              <div *ngIf="jobData.job_type_id;else notHotJob"
+                style="padding: 12px 10px 18px 15px;float:right;color:#ffffff;">Posted by: <strong
+                  class="cursor-default" itemprop="hiringOrganization"
+                  title="Individual">{{jobData['coordinator']}}</strong>, <span itemprop="datePosted"
+                  class="jsPostedOn"><small>{{jobData['activationDate']}}</small></span>
+              </div>
+              <ng-template #notHotJob>
+                <div style="padding: 12px 10px 18px 15px;float:right;">Posted by: <strong class="cursor-default"
+                    itemprop="hiringOrganization" title="Individual">{{jobData['coordinator']}}</strong>, <span
+                    itemprop="datePosted" class="jsPostedOn"><small>{{jobData['activationDate']}}</small></span>
+                </div>
+              </ng-template>
+
+
+              <div class="panel-body" style="padding: 4px 15px !important;">
+
+                <div class="row" style="width: 100%;float: left;height:40px;">
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-building-o round" style="color:rgb(121, 19, 16);"></i>
+                    </span>
+                    <span>
+                      <p>Company</p>
+                      <p>{{jobData['compnyname']}}</p>
+                    </span>
+                  </div>
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-map-marker round" aria-hidden="true" style="color:rgb(121, 19, 16);"></i>
+                    </span>
+                    <span>
+                      <p> Location</p>
+                      <p>{{jobData['address']}}</p>
+                    </span>
+                  </div>
+
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-inr round" style="color:rgb(121, 19, 16);"></i>
+                    </span>
+                    <span>
+                      <p>Annual CTC</p>
+                      <!--<p>{{jobData['ctcCurrency']}}</p>-->
+                      <p>{{jobData['ctcBandLowEnd']}} - {{jobData['ctcBandHighEnd']}} LPA</p>
+                    </span>
+                  </div>
+                  <!--<div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-black-tie round"></i>
+                    </span>
+                    <span>
+                      <p>Job Type</p>
+                      <p>{{jobData['employmentType']}}</p>
+                    </span>
+                  </div>-->
+
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-clock-o round" style="color:rgb(121, 19, 16);"></i>
+                    </span>
+                    <span>
+                      <p>Experience</p>
+                      <p>{{jobData['yrsOfExpMin']}} - {{jobData['yrsOfExpMax']}} yrs</p>
+                    </span>
+                  </div>
+
+                </div>
+                <div class="row pipeline-count">
+                  <div class="col-md-8" style="width:400px;" *ngIf="loggedIn">
+                    <table class="pipeline-table" style="border:1px solid black;">
+                      <thead>
+                        <tr>
+                          <th class="text-left col-pipeline">
+                            Pipeline:
+                          </th>
+                          <th>
+                            So
+                          </th>
+                          <th>
+                            Sc
+                          </th>
+                          <th>
+                            A
+                          </th>
+                          <th>
+                            HR
+                          </th>
+                          <th>
+                            O
+                          </th>
+                          <th>
+                            J
+                          </th>
+                          <!-- <th>
+                            E
+                          </th>-->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-left col-pipeline">
+                            For the job:
+                          </td>
+                          <td>
+                            {{jobData['sourcing_count']}}
+                          </td>
+                          <td>
+                            {{jobData['screening_count']}}
+                          </td>
+                          <td>
+                            {{jobData['assessment_count']}}
+                          </td>
+                          <td>
+                            {{jobData['negotiation_count']}}
+                          </td>
+                          <td>
+                            {{jobData['offered_count']}}
+                          </td>
+                          <td>
+                            {{jobData['joined_count']}}
+                          </td>
+                          <!-- <td>
+                            -
+                          </td>-->
+                        </tr>
+                        <tr>
+                          <td class="text-left col-pipeline">
+                            By Me:
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'sourcing_count') }}
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'screening_count') }}
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'assessment_count') }}
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'negotiation_count') }}
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'offered_count') }}
+                          </td>
+                          <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'joined_count') }}
+                          </td>
+                          <!-- <td>
+                            {{ getCountByOpeningId(jobData['openingId'],'exit_count') }}
+                          </td>-->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-md-4 rateDetails">
+
+                    <img src="../assets/img/cloud.png" height="100" width="350">
+                    <table class="CloudPosition">
+                      <thead>
+                        <tr>
+                          <th>Base Rate</th>
+                          <th>Bonus</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngIf="loggedIn">
+                          <td>{{getFixedShare(jobData['openingId'])}}</td>
+                          <td>{{getBonusShare(jobData['openingId'])}}</td>
+                          <td>{{getTotalShare(jobData['openingId'])}}</td>
+                        </tr>
+                        <tr *ngIf="!loggedIn">
+                          <td>x.xx</td>
+                          <td>{{getBonusShare(jobData['openingId'])}}</td>
+                          <td>y.yy</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                  <div class="col-md-4" style="width: 570px;" *ngIf="loggedIn">
+                    <table class="cvcount-table" style="border:1px solid black;">
+                      <thead>
+                        <tr>
+                          <th class="text-left">
+                            CV
+                          </th>
+                          <th>
+                            Limit
+                          </th>
+                          <th>
+                            Submitted
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-left">
+                            For the job:
+                          </td>
+                          <td>
+                            {{jobData['max_count']}}
+                          </td>
+                          <td>
+                            {{ getTotalCount(jobData['sourcing_count'], jobData['screening_count'], jobData['assessment_count'], jobData['negotiation_count'], jobData['offered_count'], jobData['joined_count'], jobData['exit_count'])}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-left">
+                            By Me:
+                          </td>
+                          <td>
+                            {{jobData['max_per_recruiter']}}
+                          </td>
+                          <td>
+                            {{ getTotalCountByOpeningId(jobData['openingId']) }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-md-4 pull-right" style="align-items: center; margin: 0px;">
+                    <table style="width: 99%; margin: 58px 0px 0px 5px;">
+                      <tr>
+                        <td style="width: 120px; float:right; text-align: right;"><button
+                            *ngIf="showPostResume(jobData)" class="btn btn-danger apply-btton pull-right"
+                            (click)="applyForJob(jobData.openingId,jobData.reqsource)" target="_blank">Post Resume</button>
+                          <!-- <ng-template #redirectToLoggin>
+                            <button [routerLink]="['/login']" class="btn btn-danger apply-btton pull-right">Post
+                              Resume</button>
+                          </ng-template> -->
+                        </td>
+
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- <div class="row" style="align-items: center; margin: 0px;">
+                  <table style="width: 99%; margin: 5px 0px 0px 5px;">
+                    <tr>
+                      <td>
+                        <i class="fa fa-user-circle-o gray-light"></i> Career Stream
+                        <span class="subRoles gray-light hidden-xs hidden-sm"> -
+                          <span>{{jobData['crStreamName']}}</span>
+                        </span>
+                      </td> 
+                      <td>
+                        <i class="fa fa-map gray-light"></i> Location
+                        <span class="subRoles gray-light hidden-xs hidden-sm"> -
+                          <span> {{jobData['address']}}</span>
+                      <span>-{{jobData['office']}}</span>
+                      </span>
+                      </td>-->
+                <!--<td>
+                        <div>Posted by: <strong class="cursor-default" itemprop="hiringOrganization"
+                            title="Individual">{{jobData['coordinator']}}</strong>, <span itemprop="datePosted"
+                            class="jsPostedOn"><small>{{jobData['activationDate']}}</small></span>
+                        </div>
+                      </td>
+                      <td style="width: 120px; float:right; text-align: right;"><button
+                          *ngIf="loggedIn; else redirectToLoggin;" class="btn btn-danger apply-btton pull-right"
+                          (click)="applyForJob(jobData.openingId)" target="_blank">Post Resume</button>
+                        <ng-template #redirectToLoggin>
+                          <button [routerLink]="['/login']" class="btn btn-danger apply-btton pull-right">Post
+                            Resume</button>
+                        </ng-template>
+                      </td>
+
+                    </tr>
+                  </table>
+
+                  <div class="col-md-9" style="display: flex; align-items: center;">
+                    <div class="categories" style="margin: 0px; padding: 10px 20px 5px 5px;">
+                      <i class="fa fa-user-circle-o gray-light"></i> Career Stream
+                      <span class="subRoles gray-light hidden-xs hidden-sm"> -
+                        <span>{{jobData['crStreamName']}}</span>
+                      </span>
+                    </div>
+
+                    <div class="categories" style="margin: 0px; padding: 10px 20px 5px 5px;">
+                      <i class="fa fa-map gray-light"></i> Location
+                      <span class="subRoles gray-light hidden-xs hidden-sm"> -
+                        <span> {{jobData['address']}}</span>
+                         <span>-{{jobData['office']}}</span> 
+                  </span>
+                </div>
+
+
+                <div class="postedBy gray" style="margin: 0px; padding: 10px 20px 5px 5px;">
+                  <div>Posted by: <strong class="cursor-default" itemprop="hiringOrganization"
+                      title="Individual">{{jobData['coordinator']}}</strong>, <span itemprop="datePosted"
+                      class="jsPostedOn"><small>{{jobData['activationDate']}}</small></span>
+                  </div>
+                  <!-- <div style="padding-top: 10px;">
+                              CV Limit / Recruiter:
+                              <span class="subRoles gray-light hidden-xs hidden-sm">
+                                <span> {{jobData['max_per_recruiter']}}</span>
+                              </span>
+      
+                            </div>
+                            <div style="padding-top: 10px;">
+                              CV Limit / Job:
+                              <span class="subRoles gray-light hidden-xs hidden-sm">
+                                <span> {{jobData['max_count']}}</span>
+                              </span>
+      
+                            </div> -->
+                <!-- <div style="padding-top: 10px;">
+                              Fixed Share <label class="subRoles gray-light hidden-xs hidden-sm">6%</label>
+                              + Bonus <label class="subRoles gray-light hidden-xs hidden-sm">4%</label>
+                            </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button *ngIf="loggedIn; else redirectToLoggin;" class="btn btn-danger apply-btton pull-right"
+                  (click)="applyForJob(jobData.openingId)" target="_blank">Post Resume</button>
+                <ng-template #redirectToLoggin>
+                  <button [routerLink]="['/login']" class="btn btn-danger apply-btton pull-right">Post
+                    Resume</button>
+                </ng-template>
+              </div> 
+
+                </div>-->
+              </div>
+              <div class="panel-footer" *ngIf="jobData.job_type_id">
+
+
+                <ul class="hot-jobs" *ngFor="let jtypedata of jobData['job_type_data']">
+                  <li><label class="badge badge-danger">{{jtypedata[0]}}</label></li>
+                  <li><label>Start Date: {{jtypedata[1]}}</label></li>
+                  <li><label>End Date: {{jtypedata[2]}}</label></li>
+                  <li>
+                    <a class="mybuttonrtr offers-block" data-toggle="modal" data-target="#exampleModal"
+                      (mouseenter)="ShowComment(jtypedata[4],jtypedata[5]);">{{jtypedata[4]}}</a>
+                  </li>
+                </ul>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /Row2 -->
+
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /feature-details -->
+
+
+
+<!-- Modal -->
+<button type="button" #openLoginModel id="openLoginModel" style="display:none;" class="btn btn-info btn-lg"
+  data-toggle="modal" data-target="#loginModel">Open Modal</button>
+<div id="loginModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 style="margin: 38px 7px;text-align: center; line-height: 23px; font-size:18px;">Vendor Login</h4>
+
+        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" style="padding-bottom: 10px"
+          [formGroup]="loginForm" (submit)='validateLoginDetails(loginForm.value)'>
+
+          <input type="hidden" placeholder="User Name" class="form-control form-control-lg rounded-0"
+            formControlName="loginAs" id="loginAs" required="" value="Vendor">
+
+          <div class="form-group">
+            <label for="uname1">User Name</label>
+            <input type="text" placeholder="User Name" class="form-control form-control-lg rounded-0"
+              formControlName="username" id="username" required="">
+            <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">Please Enter Correct
+              Username/Password.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="password" class="form-control form-control-lg rounded-0" id="password"
+              formControlName="password" required="" autocomplete="new-password">
+            <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">Please Enter Correct
+              Username/Password.!</div>
+          </div>
+
+          <button type="submit" class="btn btn-danger" id="btnLogin"
+            style="width:100%; border-radius: 0px; padding: 9px 12px; ">Login</button>
+
+          <p class="other" id="gotoRemind" style="margin:8px 0px; text-align:center;">
+            <a data-toggle="modal" data-target="#ForgotPassword" style="font-size:13px;">Forgot your password? </a>
+          </p>
+
+          <p class="newtoscrp" style="text-align:center">New to Emagine?
+            <a class="loginbuttonsset" data-toggle="modal" data-target="#signup-option"
+              style="cursor:pointer;">Signup</a>
+          </p>
+
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal for Signup and Forgot Password-->
+<div id="signup-option" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h3 style="margin: 38px 7px;text-align: center; line-height: 23px; font-size:18px;">JOIN THE MOST ADVANCED
+          RECRUITMENT MARKETPLACE</h3>
+
+        <p style="text-align: center;"><a (click)="employerRegistration()" class="btn btn-danger btn-lg"
+            style="border-radius:0px;" data-dismiss="modal">Sign Up as Employer</a></p>
+        <p style="text-align: center; margin-bottom:30px;"><a (click)="recruiterRegistration()"
+            class="btn btn-danger btn-lg" style="border-radius:0px;" data-dismiss="modal">Sign Up as Recruiter</a></p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Forgot Password Model -->
+<div id="ForgotPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <form class="form" role="form" autocomplete="off" id="formForgotPassword" name="formForgotPassword"
+          style="padding-bottom: 10px" [formGroup]="forgotPasswordForm"
+          (submit)='SendForgotPasswordMail(forgotPasswordForm.value)'>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 style="margin: 38px 7px;text-align: center; line-height: 23px; font-size:18px;">Forgot Password?</h3>
+
+          <select id="loginType" name="loginType" class="form-control" formControlName="loginType" #loginType
+            required="" style="width:315px;">
+            <option value='' selected="selected">Select Type</option>
+            <option value="Admin">Admin</option>
+            <option value="Vendor">Vendor</option>
+          </select>
+          <br>
+          <input type="text" formControlName="forgotPasswordmail" id="forgotPasswordmail" name="forgotPasswordmail"
+            placeholder="e-mail address" class="form-control form-control-lg rounded-0" required="">
+          <div *ngIf="forgotPasswordmail.invalid && (forgotPasswordmail.dirty || forgotPasswordmail.touched)">
+            <div class="invalid-feedback" *ngIf="forgotPasswordmail.errors.required"> Email Is Required. </div>
+            <div class="invalid-feedback" *ngIf="forgotPasswordmail.errors?.pattern"> Enter Valid Email </div>
+          </div>
+          <br />
+          <button type="submit" [disabled]="forgotPasswordForm.invalid" class="btn btn-danger" id="btnLogin"
+            style="width:100%; border-radius: 0px; padding: 9px 12px; ">Send Mail</button>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade top-offers" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0px solid #e5e5e5;">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:280px;">
+        <h2>{{showTitle}}</h2>
+        <p>{{showComment}} </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

@@ -1,0 +1,264 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+	<!-- Nav -->
+	<nav id="nav" class="navbar nav-transparent">
+		<div class="container">
+
+			<div class="navbar-header">
+				<!-- Logo -->
+				<div class="navbar-brand">
+					<a href="index.html">
+						<img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+						<img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<!-- Collapse nav button -->
+				<div class="nav-collapse">
+					<span></span>
+				</div>
+				<!-- /Collapse nav button -->
+			</div>
+
+			<!--  Main navigation  -->
+			<ul class="main-nav nav navbar-nav navbar-right">
+				<li><a [routerLink]="['/']">Home</a></li>
+				<li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+					<ul class="dropdown" style="position:absolute;">
+						<li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+						<li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+					</ul>
+				</li>
+				<li><a [routerLink]="['/about-us']">About</a></li>
+				<li><a id="contactpg" [routerLink]="['/contact']">Contact</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a>
+				</li>
+				<li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+				<ng-template #showLogin>
+					<li> <a [routerLink]="['/login']">Login</a></li>
+				</ng-template>
+				<li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a>
+				</li>
+			</ul>
+			<!-- /Main navigation -->
+
+		</div>
+	</nav>
+	<!-- /Nav -->
+
+	<!-- home wrapper -->
+	<div class="home-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="wow bounce header-banner-heading">We’d Love To Hear From You.</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+
+<!-- how it works -->
+<div id="contact-form-address" class="section lg-padding">
+
+	<!-- Container -->
+	<div class="container">
+		<div class="col-md-12">
+
+			<div class="col-md-6 address-block wow slideInUp">
+				<h3>For Hiring Solutions</h3>
+				<p><span style="font-size: 15px;">Drop an Email at <i class="fa fa-envelope-o"></i> </span> <span
+						style="color:blue;"><u> sales@emagine.co.in</u></span> or</p>
+				<p><span style="font-size: 15px;">Call us at <i class="fa fa-phone"></i></span> +91 9860070252</p>
+			</div>
+
+			<div class="col-md-6 address-block wow slideInUp">
+				<h3>For Recruitment Partner Empanelment</h3>
+				<p><span style="font-size: 15px;">Drop an Email at <i class="fa fa-envelope-o"></i> </span> <span
+						style="color:blue;"><u> new.vendorpartner@emagine.co.in</u></span></p>
+			</div>
+
+		</div>
+		<!-- Row -->
+		<!-- <div class="row">
+
+			<div class="wow fadeIn col-md-5">
+
+				<div class="contact-form-custom">
+					<h3>Get In Touch Right Now!</h3>
+					<p>WE'LL REPLY IMMEDIATELY</p>
+					<form role="form" autocomplete="off" id="formContact" novalidate="" style="padding-bottom: 10px"
+						[formGroup]="contactForm" (submit)='submitContactDetails(contactForm.value)'>
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Select Partner(required)</label>
+							<select id="partnerType" class="form-control" name="partnerType" formControlName="partnerType"
+								#partnerType required style="width:372px;">
+								<option value='' selected="selected">Select Type</option>
+								<option value="clientPartner">Client Partner</option>
+								<option value="vendorPartner">Vendor Partner</option>
+							</select>
+
+							<div *ngIf="partnerType.dirty || partnerType.touched">
+								<div class="invalid-feedback" *ngIf="partnerType.errors.required">Partner Type is Required.</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="exampleInputEmail1">Your Name(required)</label>
+							<input type="text" class="form-control" formControlName="contactname" id="contactname" name="contactname"
+								required placeholder="">
+							<div *ngIf="contactname.invalid && (contactname.dirty || contactname.touched)">
+								<div class="invalid-feedback" *ngIf="contactname.errors.required">Name is Required.</div>
+								<div class="invalid-feedback" *ngIf="contactname.errors?.pattern"> Enter Valid Name. </div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Your Email(required)</label>
+							<input type="text" class="form-control" formControlName="contactemail" id="contactemail"
+								name="contactemail" required placeholder="">
+							<div *ngIf="contactemail.invalid && (contactemail.dirty || contactemail.touched)">
+								<div class="invalid-feedback" *ngIf="contactemail.errors.required"> Email Is Required. </div>
+								<div class="invalid-feedback" *ngIf="contactemail.errors?.pattern"> Enter Valid Email. </div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Subject</label>
+							<input type="text" class="form-control" formControlName="subject" id="subject" name="subject"
+								placeholder="">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleInputPassword1">Your Message</label>
+							<textarea class="form-control" formControlName="message" id="message" name="message" rows="6"></textarea>
+						</div>
+
+						<input type="submit" [disabled]="contactForm.invalid" value="Send" id="btnSubmit" class="btn-submit">
+						<img id="loader" name="loader" src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader"
+							style="width: 42px;display:none;">
+
+					</form>
+
+
+				</div>
+
+
+			</div>
+
+			<div class="col-md-7">
+
+				<div class="col-md-12">
+
+					<div class="col-md-6 address-block wow slideInLeft">
+						<h3>Mumbai</h3>
+						<p>1201, B-Wing, ONE BKC<br>"G Block", Bandra – Kurla Complex<br>Bandra (East), Mumbai – 400 051, India.</p>
+					</div>
+
+					<div class="col-md-6 address-block wow slideInRight">
+						<h3>Pune</h3>
+						<p>Level-1, Summer Court, Magarpatta City,<br>Hadapsar Pune 411028.<br>Maharashtra, India.</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-12">
+
+					<div class="col-md-6 address-block wow slideInLeft">
+						<h3>Bangalore</h3>
+						<p>#1111, 11th Fl., Raheja Towers,<br>East Wing, #26/27 MG Road<br>Bengaluru, India – 560001.</p>
+					</div>
+
+					<div class="col-md-6 address-block wow slideInRight">
+						<h3>Gurgaon</h3>
+						<p>404, Vatika Professional Point<br>Golf Course Extension Road, Sector-66<br>Gurgaon 122 002, Haryana
+							India.</p>
+					</div>
+
+				</div>
+
+				<div class="col-md-12">
+
+					<div class="col-md-6 address-block wow slideInUp">
+						<h3>Chennai</h3>
+						<p>GF3, Palani Centre<br>32, Venkatanarayana Road, T Nagar<br>Chennai – 600 017, INDIA.</p>
+					</div>
+
+					<div class="col-md-6 address-block wow slideInUp">
+						<h3>Contact us</h3>
+						<p><span style="font-size: 15px;"><i class="fa fa-phone"></i> <i class="fa fa-whatsapp"></i></span> +91
+							8291003178</p>
+					</div>
+
+				</div>
+				<div class="col-md-12">
+
+					<div class="col-md-6 address-block wow slideInUp">
+						<h4 style="padding-bottom: 20px;">For Hiring Solutions</h4>
+						<p><span style="font-size: 15px;"></span></p>
+						<p><span style="font-size: 15px;"><i class="fa fa-envelope-o"></i> </span> sales@emagine.co.in</p>
+						<p><span style="font-size: 15px;"><i class="fa fa-phone"></i></span> +91 9860070252</p>
+					</div>
+
+					<div class="col-md-6 address-block wow slideInUp">
+						<h4>For Recruitment Partner Empanelment</h4>
+						<p><span style="font-size: 15px;"><i class="fa fa-envelope-o"></i> </span> new.vendorpartner@emagine.co.in
+						</p>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+
+		</div> -->
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /contact-form-address -->
+
+
+
+<button type="button" #openContactModal id="openContactModal" style="display:none;" class="btn btn-info btn-lg"
+	data-toggle="modal" data-target="#contactModal">Open Modal</button>
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Details Added Successfully</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Our Team will get back to you.<br>
+					Thank You!</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

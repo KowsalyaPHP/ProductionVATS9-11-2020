@@ -1,0 +1,90 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "recruitment-project"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "assets/frontend-style-script/css/style-master.css",
+        "assets/frontend-style-script/css/bootstrap.min.css",
+        "assets/frontend-style-script/css/owl.carousel.css",
+        "assets/frontend-style-script/css/owl.theme.default.css",
+        "assets/frontend-style-script/css/magnific-popup.css",
+        "assets/frontend-style-script/css/testimonial.css",
+        "assets/frontend-style-script/css/font-awesome.min.css",
+        "assets/frontend-style-script/css/team-member.css",
+        "assets/frontend-style-script/css/text-slider.css",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css",
+        "assets/frontend-style-script/css/ion.rangeSlider.css",
+        "assets/frontend-style-script/css/ion.rangeSlider.skinFlat.css",
+        "../node_modules/owl.carousel/dist/assets/owl.carousel.css",
+        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+        "../node_modules/ng-pick-datetime/assets/style/picker.min.css",
+        "../node_modules/ngx-toastr/toastr.css"
+      ],
+      "scripts": [
+        "assets/frontend-style-script/js/jquery.min.js",
+        "assets/frontend-style-script/js/bootstrap.min.js",
+        "assets/frontend-style-script/js/owl.carousel.min.js",
+        "assets/frontend-style-script/js/jquery.magnific-popup.js",
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/owl.carousel/dist/owl.carousel.js",
+        "assets/frontend-style-script/js/jquery.flexslider-min.js",
+        "assets/frontend-style-script/js/testimonial-main.js",
+        "assets/frontend-style-script/js/main-team.js",
+        "../node_modules/datatables.net/js/jquery.dataTables.js",
+        "assets/frontend-style-script/js/ion.rangeSlider.min.js",
+        "assets/frontend-style-script/js/responsiveslides.min.js",
+        "assets/frontend-style-script/js/main.js",
+        "../node_modules/ng2-auto-complete/dist/ng2-auto-complete.umd.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

@@ -1,0 +1,401 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+	<!-- Nav -->
+	<nav id="nav" class="navbar nav-transparent">
+		<div class="container">
+
+			<div class="navbar-header">
+				<!-- Logo -->
+				<div class="navbar-brand">
+					<a href="index.html">
+						<img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+						<img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<!-- Collapse nav button -->
+				<div class="nav-collapse">
+					<span></span>
+				</div>
+				<!-- /Collapse nav button -->
+			</div>
+
+			<!--  Main navigation  -->
+			<ul class="main-nav nav navbar-nav navbar-right">
+				<li><a [routerLink]="['/']">Home</a></li>
+				<li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+					<ul class="dropdown" style="position:absolute;">
+						<li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+						<li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+					</ul>
+				</li>
+				<li><a id="abtus" [routerLink]="['/about-us']">About</a></li>
+				<li><a [routerLink]="['/contact']">Contact</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a>
+				</li>
+				<li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+				<ng-template #showLogin>
+					<li> <a [routerLink]="['/login']">Login</a></li>
+				</ng-template>
+				<li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a>
+				</li>
+
+			</ul>
+			<!-- /Main navigation -->
+
+		</div>
+	</nav>
+	<!-- /Nav -->
+
+	<!-- home wrapper -->
+	<div class="home-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="header-banner-heading wow bounce">We Bring Intelligence To Recruitment</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+<!-- About -->
+<div id="feature-details" class="section md-padding feature-list bg-grey">
+
+	<!-- Container -->
+	<div class="container">
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center" style="margin-bottom: 33px;">
+				<h2 class="title wow slideInUp" style="font-size:33px; font-weight:700;color: #5a5f61">OUR BELIEF</h2>
+			</div>
+			<!-- /Section header -->
+		</div>
+
+		<div class="row">
+
+
+			<div class="wow slideInUp col-md-10 adjust-background" style="float:none; margin:auto;">
+
+				<p class="profile-text">
+					We are a bunch of people who want to change the way the world recruits talent and we are committed
+					in our belief that we will change the TA landscape. In the years to come, AI /ML/ Robotics will
+					change the processes and will enhance candidate and manager experience to a great extent
+				</p>
+
+				<p class="profile-text">
+					We are a member firm of EMA Partners India; the leading arm of a Global search firm.
+				</p>
+
+				<h3 style="text-align:center;">"We believe Technology should be Free; Pay Only for Service."</h3>
+
+			</div>
+
+		</div>
+		<!-- /Row1 -->
+	</div>
+</div>
+
+
+
+<div id="feature-details-points" class="section md-padding feature-list">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center" style="margin-bottom: 33px;">
+				<h2 class="title wow slideInUp" style="font-size:33px; font-weight:700;color: #5a5f61">WE WANT TO</h2>
+			</div>
+			<!-- /Section header -->
+		</div>
+
+
+
+
+		<div class="row" style="margin: 50px 0px 37px 0px;">
+
+			<!-- <div class="col-md-12">
+				<h3 class="feature-title wow fadeIn" style="margin-top:0px;"> WE WANT TO</h3>
+			</div> -->
+
+			<div class="col-md-11">
+				<h3 class="feature-title wow fadeIn">1. For Our Partners</h3>
+
+				<ul class="feature-list-items">
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Bring Respect to the recruiting community</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Create Rich Employment and earning Opportunities</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Bring the best recruitment opportunities to every single
+							recruiter on our Marketplace</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Enable our Marketplace partners with a great technology
+							platform</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Bring the Best Clients to work with</span>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="col-md-11">
+				<h3 class="feature-title wow fadeIn">2. For Our Clients</h3>
+
+				<ul class="feature-list-items">
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">We bring transformational recruitment tech
+							solutions</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Bring freedom from transactional recruitment</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">Open access to the World’s Largest Marketplace</span>
+					</li>
+
+					<li class="wow slideInLeft feature-icon-list-item">
+						<span class="feature-icon-list-icon">
+							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+						</span>
+						<span class="featurer-icon-list-text">We own your Headache!! We Close positions!!</span>
+					</li>
+
+
+				</ul>
+			</div>
+
+		</div>
+		<!-- /Row2 -->
+
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /feature -->
+
+<!-- Portfolio -->
+<div id="short-note" class="section lg-padding" style="padding-top:0px; padding-bottom:0px; height:100vh;">
+	<!-- Background Image -->
+	<div class="bg-img-company-reg wow fadeIn"
+		style="background-size:100% 100%; background-image: url('assets/frontend-style-script/img/aboutus_grp_bg.jpg');">
+		<div class="overlay"></div>
+	</div>
+	<!-- /Background Image -->
+	<!-- Container -->
+	<div class="container" style="padding-top:35vh;">
+
+		<!-- Row -->
+		<div class="row">
+
+			<div class="col-md-10 short-note-works wow flipInX" data-wow-delay=".7s">
+				<p>Our Real People who make Emagine Tick!!<br />
+					50+ Team growing…..</p>
+			</div>
+
+		</div>
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /short-note -->
+
+
+
+<!-- About -->
+<div id="tranding-industry" class="section md-padding ">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center" style="margin-bottom: 33px;">
+				<p class="wow slideInUp" data-wow-delay=".5s"
+					style="text-align:center; font-size: 20px; font-weight: 600; color: #5a5f61;">WHO WE ARE</p>
+				<h2 class="title wow slideInUp" data-wow-delay=".8s"
+					style="font-size:33px; font-weight:700;color: #5a5f61">MEET OUR LEADERSHIP TEAM</h2>
+			</div>
+			<!-- /Section header -->
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-12">
+				<main>
+					<section id="cd-team" class="cd-section">
+						<div class="cd-container">
+
+							<ul style="display: flex; justify-content: space-around;">
+
+								<li class="wow slideInUp" data-wow-delay=".5s">
+									<a href="javascript:void(0);" data-type="member-1">
+										<figure>
+											<img src="assets/frontend-style-script/img/team1.jpg" alt="Team member 1"
+												class="tm-img">
+											<div class="cd-img-overlay"><span>View Bio</span></div>
+										</figure>
+
+										<div class="cd-member-info">
+											Y. Sreenivasa Rao <span>CEO & CO-FOUNDER</span>
+										</div> <!-- cd-member-info -->
+									</a>
+								</li>
+
+								<li class="wow slideInUp" data-wow-delay="0.6s">
+									<a href="javascript:void(0);" data-type="member-2">
+										<figure>
+											<img src="assets/frontend-style-script/img/team4.jpg" alt="Team member 2"
+												class="tm-img">
+											<div class="cd-img-overlay"><span>View Bio</span></div>
+										</figure>
+
+										<div class="cd-member-info">
+											K. Sudarshan <span>CO-FOUNDER</span>
+										</div> <!-- cd-member-info -->
+									</a>
+								</li>
+
+
+							</ul>
+						</div> <!-- cd-container -->
+					</section> <!-- cd-team -->
+					<div class="cd-overlay"></div>
+				</main>
+
+				<div class="cd-member-bio member-1">
+					<div class="cd-member-bio-pict">
+						<img src="assets/frontend-style-script/img/team1_640.jpg" alt="Member Bio image">
+					</div> <!-- cd-member-bio-pict -->
+
+					<div class="cd-bio-content">
+						<div class="amoteam-panel-sc__header amoteam-sc-text-block__header">
+							<h5 class="amoteam-panel-sc_title amoteam-sc-text-block_title">Hi</h5>
+							<div class="amoteam-panel-sc_subtitle amoteam-sc-text-block_subtitle">GET TO KNOW SREENIVASA
+							</div>
+						</div>
+
+						<p>Sreeni is the CEO & Co-Founder of Emagine. An FMS Delhi Alumnus who brings 25+ years of
+							Business and Human Resources experience with Global Market Leaders. He saw the convergence
+							between Business and HR and decided to make people growth his passion in 2006.</p>
+						<p>Sreeni’s experience is particularly fizzy with his long stint at Coca-Cola where he managed
+							large & complex bottling/ manufacturing and market/supply chain operations. He also ran Dell
+							UK P&L , gaining expertise in running large scale BPO and global shared services. Sreeni
+							also worked with the $14 BN Global IT consulting major Capgemini. In his first HR role as
+							Vice-President HR at Capgemini, he was seen as the industry flag bearer in leveraging
+							technology solutions in the Recruitment.</p>
+					</div> <!-- cd-bio-content -->
+				</div> <!-- cd-member-bio -->
+
+				<div class="cd-member-bio member-2">
+					<div class="cd-member-bio-pict">
+						<img src="assets/frontend-style-script/img/team4.jpg" alt="Member Bio image">
+					</div> <!-- cd-member-bio-pict -->
+
+					<div class="cd-bio-content">
+
+						<div class="amoteam-panel-sc__header amoteam-sc-text-block__header">
+							<h5 class="amoteam-panel-sc_title amoteam-sc-text-block_title">Hi</h5>
+							<div class="amoteam-panel-sc_subtitle amoteam-sc-text-block_subtitle">GET TO KNOW SUDARSHAN
+							</div>
+
+						</div>
+
+						<p>Sudarshan co-founded EMA Partners in India in 2003. He is a member of the EMA Partners’
+							Executive Management team serving as VP Marketing & APAC Chair. He also leads the Board and
+							CEO practice for the firm in India, and has partnered with clients to deliver several high
+							profile CXO appointments.</p>
+						<p>Sudarshan is based in Mumbai, and leads the business EMA Partners across India, Singapore and
+							the Middle East. He has more than 20 years of experience in Executive Search, and has led
+							successful domestic and cross-border search assignments for both Indian and multinational
+							corporations across industry sectors and functional disciplines.</p>
+						<p>Sudarshan is widely networked and recognised as an industry thought leader in India, and his
+							views are often sought by leading business media including The Economic Times of India, The
+							New York Times, CNBC, BBC, Business Today and Bloomberg.</p>
+						<p>He has written several articles in leading business media across a variety of issues
+							encompassing general management, human resources and academics. He is one of the most
+							recognised voices in the executive search industry in India. He was a member of the jury
+							that selected “India’s hottest young executives” for Business Today for the years 2014 and
+							2015.</p>
+						<p>Under his stewardship, in association with The Economic Times, EMA Partners India also
+							conducted the much acclaimed path-breaking study on IITs and IIMs and their impact on the
+							leadership of Indian corporations. EMA Partners India also conducts the annual study of
+							“India’s highest paid CEOs”, exclusively for The Times of India.</p>
+						<p>Sudarshan is an engineering graduate from the National Institute of Technology, Kurukshetra.
+						</p>
+					</div> <!-- cd-bio-content -->
+				</div> <!-- cd-member-bio -->
+
+				<a href="#0" class="cd-member-bio-close"><i class="fa fa-times"></i></a>
+				<!-- close the author bio section -->
+
+
+			</div>
+
+
+
+		</div>
+		<!-- /Row1 -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /About -->
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

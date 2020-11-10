@@ -1,0 +1,231 @@
+<!-- Header -->
+<header id="registration-list-page">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a [routerLink]="['/how-it-work']">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li><a (click)="logout()" style="cursor:pointer;">Log Out</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf="usrtype == 'Admin'">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-right: 5px;">
+          <ul class="secondary-menu">
+            <li><a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li>
+            <li><a [routerLink]="['/employerlist']">Registered Employers</a></li>
+            <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+            <!-- <li><a [routerLink]="['/job-details']">Jobs List</a></li>  -->
+            <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li>
+            <li><a [routerLink]="['/category-logs']">Category Logs</a></li>
+            <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+            <li><a style="color: #fcf683;" [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+            <!-- <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+
+<button type="button" #openInsertRateCardModal id="openInsertRateCardModal" style="display:none;"
+  class="btn btn-info btn-lg" data-toggle="modal" data-target="#showMoreClientModal">Open Modal</button>
+<div id="showMoreClientModal" name="showMoreClientModal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" style="width:368px; margin:50px auto;">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>New Rate Card</h5>
+        <button type="button" #closeInsertRateCardModal id="closeInsertRateCardModal" style="display:none;"
+          class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="rateCardForm" (ngSubmit)="insertRateCardDet()">
+          <table class="table table-insertratecard">
+            <tr>
+              <td>
+                Percentage(%)
+              </td>
+              <td>
+                <input type="number" min="0" max="100" class="form-control" formControlName="Percentage"
+                  (keyup)="percentageKeyUp($event)" #percentage id="percentage">
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+                (OR)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Amount(₹)
+              </td>
+              <td>
+                <input type="number" min="0" max="100" class="form-control" formControlName="Amount"
+                  (keyup)="amountKeyUp($event)" id="amount">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Valid From
+              </td>
+              <td>
+                <owl-date-time formControlName="ValidFrom" hideClearButton="'false'" autoClose="'true'" [min]="minDate"
+                  [dateFormat]="'DD-MMM-YYYY'" [placeHolder]="'dd-MMM-yyyy'" [type]="'calendar'"
+                  (onSelect)="changeFromDate()">
+                </owl-date-time>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Valid Till
+              </td>
+              <td>
+                <owl-date-time formControlName="ValidTill" hideClearButton="'false'" autoClose="'true'" [min]="minDate"
+                  [dateFormat]="'DD-MMM-YYYY'" [placeHolder]="'dd-MMM-yyyy'" [type]="'calendar'"
+                  (onSelect)="changeTillDate()">
+                </owl-date-time>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Remarks
+              </td>
+              <td>
+                <textarea class="form-control" formControlName="Remarks">
+                </textarea>
+              </td>
+            </tr>
+            <tr>
+              <td>
+
+              </td>
+              <td>
+                <button type="submit" class="btn btn-danger" [disabled]="isInsertRateCard"><i *ngIf="isInsertRateCard"
+                    class="fa fa-circle-o-notch fa-spin"></i>Submit</button>
+                &nbsp;
+                <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+                <br />
+
+                <label class="text-danger">
+                  {{insertRateCardErrorMsg}}
+                </label>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- /Header -->
+
+<!-- About -->
+<div id="feature-details" class="section xs-padding feature-list bg-grey-dark" style="padding-top: 0px;">
+
+  <!-- Container -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <table style="width: 100%">
+          <tr>
+            <td>
+              <h3 style="text-align:left; margin:20px 0px; font-size:21px;">RoCk Rate Card</h3>
+            </td>
+            <td style="text-align:right; padding-right: 15px;">
+              <button class="btn btn-danger" (click)="addNewRateCard()">Add New</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:50px;">
+      <div class="col-md-12 tab-dashboard">
+        <table id="rateCardTable" *ngIf="rateCardList!=[]"
+          class="table table-hover table-striped table-bordered table-client-dashboard" style="width:100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Percentage(%)</th>
+              <th>Amount(₹)</th>
+              <th>Valid From</th>
+              <th>Valid Till</th>
+              <th>Remarks</th>
+              <th>Created On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of rateCardList">
+              <td>{{item.RateCode}} </td>
+              <td>{{item.Percentage}}</td>
+              <td>{{item.Amount}}</td>
+              <td>{{item.ValidFrom}}</td>
+              <td>{{item.ValidTill}}</td>
+              <td>{{item.Remarks}}</td>
+              <td>{{item.C_Date}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- /Row2 -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /About -->
+
+
+
+<!-- <app-footer></app-footer> -->
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

@@ -1,0 +1,212 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar nav-transparent">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a id="hiwEmp" [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a></li>
+        <li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+        <ng-template #showLogin>
+          <li> <a [routerLink]="['/login']">Login</a></li>
+        </ng-template>
+        <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <!-- home wrapper -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="header-banner-heading wow bounce">India’s Largest and Most Advanced Recruitment Marketplace</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+<!-- how it works -->
+<div id="how-it-works" class="section md-padding bg-grey">
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="row">
+
+      <!-- Section header -->
+      <div class="section-header text-center">
+        <h2 class="title wow wow fadeIn">IF YOU ARE</h2>
+        <p class="wow fadeIn" data-wow-duration="0.5s" data-wow-delay="0.5s" style="font-size: 19px;">( Large Corporate
+          Entity / A Manufacturing or services entity / SME )</p>
+        <P class="wow fadeIn" data-wow-duration="0.7s" data-wow-delay="0.7s" style="font-size: 27px;">Emagine- India’s
+          Largest Recruitment Marketplace helps you to</P>
+      </div>
+      <!-- /Section header -->
+
+      <div class="features-sample col-md-12 no-padding" style="margin-top:30px;">
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><i class="ion-beer"></i></div>
+            <h4 class="title"><a href="">Bring 1000's of Recruitment Vendors on a Single platform</a></h4>
+            <p class="description">Stop searching, screening 1000's of recruitment vendors!! Emagine will give access to
+              all of them in one go.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+            <h4 class="title"><a href="">No need to Empanel</a></h4>
+            <p class="description">Don’t waste your time Empaneling every vendor!! Emagine will take care of it!!</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><i class="fa fa-hourglass-half"></i></div>
+            <h4 class="title"><a href="">No vendor resume processing</a></h4>
+            <p class="description">No resume processing headache!!Emagine will take care of entire End to End
+              Recruitment!</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><i class="ion-android-time"></i></div>
+            <h4 class="title"><a href="">No vendor Payment management</a></h4>
+            <p class="description">Why invest time and efforts on Vendor payment management!!Leave the payment
+              processing to us and Focus on your business!!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-12" style="float:none; margin:auto; text-align:center;">
+
+        <a [routerLink]="['/employer']" class="btn btn-lg btn-custom" role="button">Join us now !</a>
+
+      </div>
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /how it works -->
+
+<!-- Portfolio -->
+<div id="short-note" class="section sm-padding">
+  <!-- Background Image -->
+  <div class="bg-img-company-reg wow fadeIn"
+    style="background-image: url('assets/frontend-style-script/img/office-620817_1920.jpg');">
+    <div class="overlay"></div>
+  </div>
+  <!-- /Background Image -->
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="features-sample row">
+
+      <div class="col-md-12 short-note-works wow flipInX" data-wow-delay=".7s">
+        <h3 class="bark-bg-heading">Emagine screens and shortlist only the relevant resumes for you!</h3>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+          <div class="icon"><i class="fa fa-map-marker"></i></div>
+          <h4 class="title"><a href="">- Vendors across 1000+ pincodes</a></h4>
+          <p class="description">Looking for recruitment vendor partners from a particular region to work on your
+            profile? Don’t worry !!!We have Pan India vendor base across every possible region.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+          <div class="icon"><i class="fa fa-briefcase"></i></div>
+          <h4 class="title"><a href="">- Hires across levels and industries</a></h4>
+          <p class="description">Looking to hire for Mid Level? or Junior level? No Worries!!! We fulfill requirements
+            across levels in every possible industry. </p>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /short-note -->
+
+<div id="flow-chart" class="section md-padding ">
+
+  <!-- Container -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12 flowchart" style="text-align:center;">
+        <!-- <iframe src="//my.visme.co/embed/8ry0q0gk-how-it-works-1" height="885" width="800" style="border: 0px;" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
+        <iframe class="wow fadeIn" src="//my.visme.co/embed/vdy7304p-trial-flow-chart-for-emagine" height="1222"
+          width="800" style="border: 0px;"></iframe>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>

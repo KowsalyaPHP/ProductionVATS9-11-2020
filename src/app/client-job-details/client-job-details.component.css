@@ -1,0 +1,330 @@
+/*#accordion.panel-group .panel-heading .accordion-toggle:after {
+    
+    font: normal normal normal 14px/1 FontAwesome;  
+    content: "\e114";    
+    float: right;       
+    color: grey;        
+}
+#accordion.panel-group .panel-heading .accordion-toggle.collapsed:after {
+    
+    content: "\e080";   
+}*/
+
+#accordion.panel-group .panel {
+  border-bottom: 1px solid #ddd !important;
+}
+
+#accordion.panel-group .panel-heading {
+  border-bottom: 0;
+}
+
+#accordion.panel-group .panel-heading {
+  padding: 1px 0px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#accordion.panel-group .panel-heading h4 {
+  font-size: 15px !important;
+  margin-top: 2px !important;
+  margin-bottom: 3px !important;
+}
+
+.panel.filter-collapsible .panel-body .panel-group .panel {
+  box-shadow: none !important;
+}
+
+ul.hot-jobs {
+  display: table;
+  width: 100%;
+  margin: 0px;
+}
+ul.hot-jobs li label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #3f5678;
+}
+ul.hot-jobs li {
+  display: table-cell;
+  width: 33%;
+  font-weight: normal;
+}
+ul.hot-jobs li:first-child {
+  text-align: left;
+}
+ul.hot-jobs li:nth-child(2) {
+  text-align: center;
+}
+ul.hot-jobs li:last-child {
+  text-align: right;
+}
+
+span.filtered-dot {
+  width: 10px;
+  height: 10px;
+  background: #17e64b;
+  border-radius: 100px;
+  margin: 0px 11px;
+  display: inline-block;
+}
+
+ul.hot-jobs {
+  display: table;
+  width: 100%;
+  margin: 0px;
+}
+ul.hot-jobs li label {
+  font-weight: 600;
+  font-size: 11px;
+  color: #3f5678;
+}
+
+ul.hot-jobs li:first-child label {
+  font-weight: 400;
+  font-size: 11px;
+}
+
+ul.hot-jobs li {
+  display: table-cell;
+  width: 25%;
+  font-weight: normal;
+}
+ul.hot-jobs li:first-child {
+  text-align: left;
+}
+ul.hot-jobs li:nth-child(2) {
+  text-align: center;
+}
+ul.hot-jobs li:nth-child(3) {
+  text-align: center;
+}
+ul.hot-jobs li:last-child {
+  text-align: right;
+}
+
+.badge-danger {
+  color: #fff !important;
+  background-color: #dc3545;
+}
+
+span.filtered-dot {
+  width: 10px;
+  height: 10px;
+  background: #17e64b;
+  border-radius: 100px;
+  margin: 0px 11px;
+  display: inline-block;
+}
+
+#exampleModal.modal.top-offers .modal-dialog {
+  width: 335px;
+  margin: 30px auto;
+}
+
+#exampleModal.modal.top-offers .modal-dialog .modal-content {
+  background: url("../../assets/frontend-style-script/img/Papermoney.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+#exampleModal.modal.top-offers .modal-dialog .modal-content:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(48, 8, 8, 0.3);
+  z-index: 0;
+}
+
+.top-offers h2 {
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 3px 4px #333;
+}
+
+.top-offers p {
+  color: #fff;
+  text-align: center;
+  font-size: 34px;
+  text-shadow: 2px 3px 4px #333;
+  font-weight: bold;
+}
+
+.loading-img {
+  background: #fff;
+  width: 76px;
+  border-radius: 13px;
+  box-shadow: 2px 3px 4px #888;
+}
+
+#loader p {
+  margin: 10% 0%;
+}
+
+a.offers-block {
+  display: inline-block;
+  width: 84px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0px 5px;
+}
+
+.panel.hotjobclass {
+  /* background-color: #d75a5a; */
+  background: linear-gradient(45deg, #e39a1b, #cd1d4f);
+  /* background: url("../../assets/frontend-style-script/img/test_123.jpg") no-repeat;*/
+}
+
+.panel.hotjobclass .panel-heading {
+  color: #fff;
+}
+
+.panel.hotjobclass .iconic-info span p {
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.panel.hotjobclass .categories {
+  color: #fff;
+}
+
+.panel.hotjobclass .gray-light {
+  color: #fff;
+}
+
+.panel.hotjobclass .panel-footer {
+  padding: 10px 15px;
+  background: transparent;
+  border-top: 1px solid #ba7979;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.panel.hotjobclass .panel-footer ul.hot-jobs li label {
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+}
+
+.panel.hotjobclass .panel-footer ul.hot-jobs li a.offers-block {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.panel.hotjobclass .gray {
+  color: #e4e4e4;
+}
+
+.panel.hotjobclass .iconic-info span .fa {
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.panel.hotjobclass .panel-footer ul.hot-jobs li .fa-trash {
+  color: #fff;
+}
+
+.panel.hotjobclass .panel-footer ul.hot-jobs li .badge-danger {
+  color: #fff !important;
+  background-color: #2f0527;
+}
+
+.panel.hotjobclass .btn-danger {
+  color: #fff;
+  background-color: #2f0527;
+  border-color: #2f0527;
+}
+
+.pipeline-count {
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.pipeline-table {
+  width: 90%;
+}
+
+.pipeline-table td,
+.pipeline-table th {
+  padding: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.pipeline-table th {
+  color: #999;
+}
+
+.pipeline-count label {
+  font-weight: 500 !important;
+}
+
+.cv-count {
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.cvcount-table {
+  width: 200px;
+}
+
+.cvcount-table td,
+.cvcount-table th {
+  padding: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.cvcount-table th {
+  color: #999;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.col-pipeline {
+  width: 100px;
+}
+
+.panel {
+  margin-bottom: 10px;
+}
+
+.panel-heading {
+  cursor: pointer;
+  background-color: #fcfcfc;
+  border-color: #aaa;
+}
+
+.panel-heading .accordion-toggle:after {
+  /* symbol for "opening" panels */
+  font-family: "FontAwesome";
+  /* essential for enabling glyphicon */
+  content: "\f0d8";
+  /* adjust as needed, taken from bootstrap.css */
+  float: right;
+  font-size: 20px;
+  /* adjust as needed */
+  color: #000000;
+  margin-top: -25px;
+  /* adjust as needed */
+}
+
+.panel-heading .accordion-toggle.collapsed:after {
+  /* symbol for "collapsed" panels */
+  content: "\f0d7";
+  font-size: 20px;
+  /* adjust as needed, taken from bootstrap.css */
+}

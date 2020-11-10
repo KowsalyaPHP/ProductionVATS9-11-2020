@@ -1,0 +1,372 @@
+<!-- Header -->
+<header id="registration-list-page">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a [routerLink]="['/how-it-work']">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li><a (click)="logout()" style="cursor:pointer;">Log Out</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf="usrtype == 'Admin'">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-right: 5px;">
+          <ul class="secondary-menu">
+            <li><a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li>
+            <li><a style="color: #fcf683;" [routerLink]="['/employerlist']">Registered Employers</a></li>
+            <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+            <!-- <li><a [routerLink]="['/job-details']">Jobs List</a></li>  -->
+            <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li>
+            <li><a [routerLink]="['/category-logs']">Category Logs</a></li>
+            <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+            <li><a [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+            <!-- <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+
+<button type="button" #openUploadImage id="openUploadImage" style="display:none;" class="btn btn-info btn-lg"
+  data-toggle="modal" data-target="#uploadImage">Open Modal</button>
+<div id="uploadImage" name="uploadImage" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">Select Profile Image</h4>
+        <button type="button" class="close" data-dismiss="modal"
+          style="position: absolute; right: 14px; top: 15px;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><small>Please select image size around (1024*786)</small></p>
+        <div>
+          <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+          <!-- <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight"> -->
+        </div>
+        <p style="text-align: center; margin-top:20px;"><a (click)="uploadImage()" class="btn btn-danger btn-lg"
+            style="border-radius:0px;" data-dismiss="modal">Upload Image</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button type="button" #openAddShare id="openAddShare" style="display:none;" class="btn btn-info btn-lg"
+  data-toggle="modal" data-target="#addShare">Open Modal</button>
+<div id="addShare" name="addShare" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">Add Rate Card</h4>
+        <button type="button" class="close" data-dismiss="modal"
+          style="position: absolute; right: 14px; top: 15px;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="pb-10">
+          Client
+          <input type="text" auto-complete [source]="clientList" max-num-list="10" class="form-control"
+            placeholder="Search by client name" [(ngModel)]="buName" [list-formatter]="clientAutocompleListFormatter"
+            (valueChanged)="clientSelected($event)" display-property-name="buName" value-property-name="buId" readonly>
+        </div>
+        <div class="pb-10">
+          Job
+          <input type="text" auto-complete [source]="openingJobList" max-num-list="10" class="form-control"
+            placeholder="Search by req. id or job title" [(ngModel)]="reqName"
+            [list-formatter]="jobAutocompleListFormatter" (valueChanged)="jobSelected($event)"
+            display-property-name="openTitle" value-property-name="openingId" readonly>
+        </div>
+        <div class="pb-10">
+          From Date
+          <owl-date-time hideClearButton="'false'" autoClose="'true'" [min]="minDate" [dateFormat]="'DD-MM-YYYY'"
+            [placeHolder]="'dd-MM-yyyy'" [type]="'calendar'" [(ngModel)]="fromDate">
+          </owl-date-time>
+        </div>
+        <div class="pb-10">
+          Till Date
+          <owl-date-time hideClearButton="'false'" autoClose="'true'" [min]="minDate" [dateFormat]="'DD-MM-YYYY'"
+            [placeHolder]="'dd-MM-yyyy'" [type]="'calendar'" [(ngModel)]="tillDate">
+          </owl-date-time>
+        </div>
+
+        <div class="pb-10">
+          Fixed Share
+          <div class="d-flex">
+            <input type="number" class="form-control" placeholder="FIxed Share" [(ngModel)]="fixedShare">
+            <select [(ngModel)]="fixedShareUnit" style="width: 50px;">
+              <option value="0">%</option>
+              <option value="1">₹</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pb-10">
+          Bonus Share
+          <div class="d-flex">
+            <input type="number" class="form-control" placeholder="Bonus Share" [(ngModel)]="bonusShare">
+            <select [(ngModel)]="bonusShareUnit" style="width: 50px;">
+              <option value="0">%</option>
+              <option value="1">₹</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pb-10">
+          <button class="btn btn-primary" (click)="submitRateCard()">Submit
+            <i *ngIf="isSavingRateCard" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+          </button> &nbsp;&nbsp;<button class="btn btn-default" data-dismiss="modal" #closeAddShare
+            id="closeAddShare">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button type="button" #openDeleteShare id="openDeleteShare" style="display:none;" class="btn btn-info btn-lg"
+  data-toggle="modal" data-target="#deleteShare">Open Modal</button>
+<div id="deleteShare" name="deleteShare" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="margin: 0;">Delete Rate Card</h4>
+        <button type="button" class="close" data-dismiss="modal" #closeDeleteShare
+          style="position: absolute; right: 14px; top: 15px;">&times;</button>
+      </div>
+      <div class="modal-body" style="display: grid">
+        <h5>{{deleteMessageRateCard}}</h5>
+        <br />
+        <div class="text-right col-md-12">
+          <button class="btn btn-primary" (click)="deleteRateCardConfirm()">Delete
+            <i *ngIf="isDeletingRateCard" class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i>
+          </button>&nbsp;&nbsp;
+          <button class="btn btn-default" data-dismiss="modal" (click)="deleteRateCardCancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- /Header -->
+
+<!-- About -->
+<div id="feature-details" class="section xs-padding feature-list bg-grey-dark">
+
+  <!-- Container -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 style="text-align:left; margin:20px 0px; font-size:21px;">Registered Employers</h3>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:50px;">
+      <div class="col-md-12 tab-dashboard">
+
+        <div class="panel" style="margin-bottom:80px;">
+          <header class="panel-heading tab-bg-dark-navy-blue" style="margin-top: -55px;">
+            <ul class="nav nav-tabs" style="margin-bottom:0px;">
+              <li class="active">
+                <a href="#1" data-toggle="tab">Employers List</a>
+              </li>
+              <li>
+                <a href="#2" data-toggle="tab">Rate Card</a>
+              </li>
+            </ul>
+          </header>
+          <div class="panel-body">
+            <div class="col-md-12">
+              <div id="exTab2" class="">
+
+                <div class="tab-content">
+
+                  <div class="tab-pane active" id="1">
+                    <h3 style="padding:20px;margin-top: -15px;font-size: 18px;">Employers List</h3>
+
+
+                    <div class="col-md-12">
+
+                      <table id="employerTable" *ngIf="regDataArr!=[]"
+                        class="table table-striped table-bordered table-hover table-client-dashboard"
+                        style="width:100%">
+                        <thead>
+                          <tr>
+                            <th style="display:none">id</th>
+                            <th>BU ID</th>
+                            <th>BU Name</th>
+                            <th>Upload Logo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of regDataArr">
+
+                            <td style="display:none"> <input value={{item.id}}> </td>
+                            <td>{{item.buId}}</td>
+                            <td>{{item.buName}}</td>
+                            <td>
+                              <div *ngIf="item.logo_path != ''; else uploadLogo; ">
+                                <!-- <p>Logo uploaded</p> -->
+                                <img alt="ErrorToLoad" [src]="item.logo_path" class="avatar avatar-full photo"
+                                  style="width:40px; border-radius: 100px;">
+                                <a id="logo_upload" name="logo_upload" class="change-logo"
+                                  (click)="uploadLogoEmp(item.id)"
+                                  style="width:76px; display: inline-block; margin: 0px 7px 0px 30px;cursor:pointer;"
+                                  data-toggle="modal">Change Logo</a>
+                                <span> | </span>
+                                <a id="logo_delete" name="logo_delete" class="change-logo"
+                                  (click)="deleteLogoEmp(item.id)"
+                                  style="width:76px; display: inline-block; margin: 0px 7px;cursor:pointer;">Delete
+                                  Logo</a>
+                              </div>
+                              <ng-template #uploadLogo>
+                                <div><button id="logo_upload" name="logo_upload" class="form-control"
+                                    (click)="uploadLogoEmp(item.id)" style="width:125px;" data-toggle="modal">Upload
+                                    Logo</button></div>
+                              </ng-template>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="2">
+                    <h3 style="padding:20px;margin-top: -15px;font-size: 18px;">Rate Card</h3>
+                    <div class="col-md-12 d-flex align-items-center">
+
+                      Client &nbsp;
+                      <div class="input-group">
+                        <input type="text" auto-complete [source]="clientList" max-num-list="10"
+                          class="form-control search-input" placeholder="Search by client name" [(ngModel)]="buName"
+                          [list-formatter]="clientAutocompleListFormatter" (valueChanged)="clientSelected($event)"
+                          display-property-name="buName" value-property-name="buId">
+                        <span class="input-group-addon" (click)="clearBUName()"><i class="fa fa-times"
+                            aria-hidden="true"></i></span>
+                      </div>&nbsp;&nbsp;&nbsp;
+
+                      Job&nbsp;
+                      <div class="input-group">
+                        <input type="text" auto-complete [source]="openingJobList" class="form-control search-input"
+                          placeholder="Search by req. id or job title" [(ngModel)]="reqName"
+                          [list-formatter]="jobAutocompleListFormatter" (valueChanged)="jobSelected($event)"
+                          display-property-name="openTitle" value-property-name="openingId">
+                        <span class="input-group-addon" (click)="clearReqName()"><i class="fa fa-times"
+                            aria-hidden="true"></i></span>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;
+
+                      <button class="btn btn-primary" (click)="getJobList()">View</button> &nbsp;&nbsp;<button
+                        class="btn btn-primary" (click)="addRateCard()">Add Rate</button>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="jobList">
+                      <br />
+                      <table id="jobListTable"
+                        class="table table-striped table-bordered table-hover table-client-dashboard"
+                        style="width:100%">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Req. ID</th>
+                            <th>Title</th>
+                            <th class="text-center">From Date</th>
+                            <th class="text-center">Till Date</th>
+                            <th class="text-center">Fixed Share</th>
+                            <th class="text-center">Bonus Share</th>
+                            <th class="text-center">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of jobList">
+
+                            <td class="text-center">{{item.openingId}} </td>
+                            <td>{{item.openTitle}}</td>
+                            <td class="text-center">{{item.fromDate}}</td>
+                            <td class="text-center">{{item.tillDate}}</td>
+                            <td class="text-center">{{item.fixedShare}}</td>
+                            <td class="text-center">{{item.bonusShare}}</td>
+                            <td class="text-center">
+                              <a *ngIf="item.fromDate" (click)="deleteRateCard(item)"><i class="fa fa-trash"
+                                  style="font-size: 16px;" aria-hidden="true"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+
+                    <!-- <ng-auto-complete (selected)="clientSelected($event)" [classes]="['']"
+                        [group]="clientNameAutoCompleteGroup">
+                      </ng-auto-complete>
+                      BuId
+                      <ng-auto-complete (selected)="clientSelected($event)" [classes]="['']"
+                        [group]="clientNameAutoCompleteGroup">
+                      </ng-auto-complete> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /Row2 -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /About -->
+
+
+
+<!-- <app-footer></app-footer> -->
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

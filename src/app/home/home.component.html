@@ -1,0 +1,690 @@
+<!-- Header -->
+<header id="home">
+	<!-- Background Image -->
+	<div class="bg-img">
+		<!-- <iframe style="width:100%; height:100%;" src="https://www.youtube.com/embed/QBoxUWn_oGY?autoplay=1&controls=0&loop=1&playlist=QBoxUWn_oGY&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+		<video id="myvideo" class="video-player" autoplay="autoplay" loop="loop" allowfullscreen style="width:100%;">
+			<source src="assets/video/shutterstock_v18642857.mp4" type="video/mp4">
+		</video>
+		<div class="overlay"></div>
+	</div>
+	<!-- /Background Image -->
+
+	<!-- Nav -->
+	<nav id="nav" class="navbar nav-transparent">
+		<div class="container">
+
+			<div class="navbar-header">
+				<!-- Logo -->
+				<div class="navbar-brand">
+					<a href="index.html">
+						<img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+						<img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<!-- Collapse nav button -->
+				<div class="nav-collapse">
+					<span></span>
+				</div>
+				<!-- /Collapse nav button -->
+			</div>
+
+			<!--  Main navigation  -->
+			<ul class="wow fadeIn main-nav nav navbar-nav navbar-right">
+				<li><a id="homepg" [routerLink]="['/']">Home</a></li>
+				<li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+					<ul class="dropdown" style="position:absolute;">
+						<li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+						<li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+					</ul>
+				</li>
+
+				<li><a [routerLink]="['/about-us']">About</a></li>
+				<li><a [routerLink]="['/contact']">Contact</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+				<li *ngIf="loggedIn && usrtype == 'Rock Client'"><a [routerLink]="['/client-job-details']">Dashboard</a>
+				</li>
+				<li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+				<ng-template #showLogin>
+					<li> <a [routerLink]="['/login']">Login</a></li>
+				</ng-template>
+				<li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a>
+				</li>
+			</ul>
+			<!-- /Main navigation -->
+
+		</div>
+	</nav>
+	<!-- /Nav -->
+
+	<!-- home wrapper -->
+	<div class="home-wrapper">
+		<div class="container-fluid">
+
+
+			<!-- home content -->
+			<div class="col-md-12 col-sm-12 col-xs-12" style="float:none; margin:auto;">
+
+
+				<div id="textSlider" class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+
+						<!-- Slideshow 4 -->
+						<div class="callbacks_container">
+							<ul class="rslides" id="slider4">
+								<li>
+									<p class="caption">Fill your jobs 3x faster</p>
+								</li>
+								<li>
+									<p class="caption">Access 1000's of Jobs every day</p>
+								</li>
+								<li>
+									<p class="caption">Access 1000's of Recruitment Vendors with Single sign-on</p>
+								</li>
+								<li>
+									<p class="caption">Let Emagine manage all your Recruitment problems</p>
+								</li>
+								<li>
+									<p class="caption">Work with the greatest Corporate brands</p>
+								</li>
+							</ul>
+						</div>
+
+
+						<h3 class="wow bounce subtitle">Join India’s Smartest Recruitment Marketplace Now!!</h3>
+						<!-- <h4 style="color:#fff; text-align:center; margin-top:20px;"> Join India’s Smartest Recruitment Marketplace Now!!</h4> -->
+
+
+
+					</div>
+
+				</div>
+
+				<div id="" class="row">
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 employer" style="padding-left:0px;width: 45%;">
+						<button class="outline-btn post-a-job pull-right"
+							(click)="gotoEmployerRegistration();">Employers/
+							Corporates/ Companies</button>
+					</div>
+
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 recruiter" style="padding-left:30px;width: 28%;">
+						<button class="outline-btn post-a-job pull-left" (click)="gotoRecruiterRegistration()">Partners/
+							Consultants/ Agencies</button>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 rock" style="padding-left: 14px;width: 20%;">
+						<a class="outline-btn post-a-job pull-left rock-link" id="Rock" href="http://emaginerock.in/"
+							style="margin-left: 10px; margin-right: 10px;text-decoration: none;"
+							target="_blank">&nbsp;&nbsp;&nbsp;RoCk&nbsp;&nbsp;&nbsp;</a>
+					</div>
+				</div>
+
+			</div>
+			<!-- /home content -->
+		</div>
+	</div>
+	<!-- /home wrapper -->
+	<!-- <section class="customer-logos slider">
+      <div class="slide"><img src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"></div>
+      <div class="slide"><img src="http://www.webcoderskull.com/img/logo.png"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg"></div>
+      <div class="slide"><img src="https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg"></div>
+   </section> -->
+	<div class="row" style="position: absolute; bottom:16px; width:100%; margin: 0px; right:0px; left:0px;">
+		<div class="section-header text-center">
+			<h2 class="wow slideInUp title" style="color:#fff">TOP COMPANIES ON OUR MARKETPLACE</h2>
+		</div>
+		<div class="col-md-12" style="margin-top:0px; padding:0px 0px 0px 20px;">
+			<owl-carousel [options]="logoSliderOptions" [items]="homeDataArr['topcompLogo']"
+				[carouselClasses]="['owl-theme', 'row', 'sliding']">
+				<div class="item" *ngFor="let item of homeDataArr['topcompLogo']">
+					<div class="thumbnail-image">
+						<img src="{{item.logo_path}}"
+							style="background-color: #fff; height: 100px; width: 130px; margin: 0px 1px;" />
+					</div>
+				</div>
+			</owl-carousel>
+			<!-- <div id="owl-carousel-1" class="owl-carousel owl-theme">
+					<div class="item" style="text-align:center; background:#fff; margin:1px; padding:4px;"
+						*ngFor="let compLogo of homeDataArr['topcompLogo']">
+		
+						<div *ngIf="compLogo.logo_path != ''; else defaultLogo; ">
+							<img alt="ErrorToLoad" [src]="compLogo.logo_path" class="company-logo"
+								style="width:100%; padding:8px; height:100px;margin:0px auto;">
+						</div>
+						<ng-template #defaultLogo>
+							<img alt="Techzenbam" src="assets/frontend-style-script/img/logo/logo-placeholder.jpg"
+								class="avatar avatar-full photo" style="width:58px;">
+						</ng-template>
+		
+					</div>
+		
+				</div> -->
+		</div>
+
+	</div>
+
+</header>
+
+<!-- /Header -->
+
+<!-- Hot Jobs -->
+<!-- <div id="about" class="section md-padding top-companies">
+
+		
+		<div class="container">
+				
+				<div class="row">
+						
+						<div class="section-header text-center">
+							<h2 class="wow slideInUp title">TOP COMPANIES HIRE FROM EMAGINE</h2>
+						</div>
+						
+					</div>
+
+             <div class="row">
+					 
+				<div class="col-md-12" style="margin-top:30px;">
+						<div id="owl-carousel-1" class="owl-carousel owl-theme">
+							<div class="item" style="text-align:center;" *ngFor="let compLogo of homeDataArr['topcompLogo']">
+								
+								<div *ngIf="compLogo.logo_path != ''; else defaultLogo; "> 
+									 <img alt="ErrorToLoad" [src]="compLogo.logo_path" class="company-logo" style="width:180px;">
+								</div>
+								<ng-template #defaultLogo> 
+										<img alt="Techzenbam" src="assets/frontend-style-script/img/logo/logo-placeholder.jpg" class="avatar avatar-full photo" style="width:58px;">
+								</ng-template>
+							
+							</div>
+							
+						</div>
+				</div>
+ 
+			 </div>
+		</div>
+</div>  -->
+
+
+
+<!-- Hot Jobs -->
+<div id="about-1" class="section xs-padding open-jobs bg-grey">
+
+	<!-- Container -->
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-md-12 hot-job-section" style="margin-bottom:30px;">
+
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item active check">
+						<a class="nav-link active wow fadeIn" id="home-tab" data-toggle="tab" href="#home-1" role="tab"
+							aria-controls="home" aria-selected="true">HOT JOBS</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link wow fadeIn" id="profile-tab" data-toggle="tab" href="#profile-1" role="tab"
+							aria-controls="profile" aria-selected="false">ALL JOBS</a>
+					</li>
+
+				</ul>
+
+
+				<div class="tab-content" id="myTabContent">
+
+					<!--tab One-->
+					<div class="tab-pane fade active" id="home-1" role="tabpanel" aria-labelledby="home-tab">
+
+						<div class="col-md-12">
+							<h4 style="text-align:center; font-size:14px;">"The Hot Jobs bonus is paid for placements
+								against resumes
+								submitted ONLY during the duration when the requisition is classified as HOT JOBS."</h4>
+							<h4 style="margin-bottom: 36px; text-align:center; font-size:14px;">"Resumes submitted
+								before or after a
+								job is classified HOT JOBS will not be eligible for the HOT JOB Bonus."</h4>
+						</div>
+
+						<div class="col-md-12">
+							<div id="open-job-slider" class="owl-carousel owl-theme common-class-for-jobs wow fadeIn">
+
+								<div class="item" *ngFor="let hotJobDatas of homeDataArr['hotJobDetails']">
+									<div *ngFor="let hotJobData of hotJobDatas" class="employer-item col-md-2"
+										style="cursor: pointer;">
+
+										<!-- <div class="col-md-1 fav-like-icon">
+																	 <a href="javascript:void(0);"><i class="fa fa-heart"></i></a>
+																 </div> -->
+																 <!--Changes-->
+
+																 <div class="col-md-12 employer-image no-padding" (click)="getHotJobContent(hotJobData['buId'])">
+																	<div class="nav-item active" *ngIf="hotJobData.logo_path != ''; else defaultLogo; ">
+																			<a class="nav-link wow fadeIn" id="hotjob-tab" data-toggle="tab" href="#hotjob-1" role="tab"
+																			aria-controls="hotjob" aria-selected="true"><img alt="ErrorToLoad" [src]="hotJobData.logo_path"
+																			class="large-size-logo" style="width:100%; height:100px;"></a>
+																	</div>
+																	<ng-template #defaultLogo>
+																			<a class="nav-link wow fadeIn" id="hotjob-tab" data-toggle="tab" href="#hotjob-1" role="tab"
+																			aria-controls="hotjob" aria-selected="true"><img alt="Techzenbam"
+																			src="assets/frontend-style-script/img/logo/logo-placeholder.jpg"
+																			class="large-size-logo" style="width:100%; height:100px;"></a>
+																	</ng-template>
+																</div>
+
+										<div class="col-md-12 job-heading">
+											<div (click)="redirectToJobDetails(hotJobData['id'],'hotJobs')">
+												<h3 title="{{hotJobData['openTitle']}}" class="employer-title">
+													{{hotJobData['openTitle']}}</h3>
+												<p title="{{hotJobData['addressCity']}}">{{hotJobData['compnyname']}}
+													<span class="location">{{hotJobData['addressCity']}}</span></p>
+												<p class="salary-amount"><span class="badge badge-danger">Hot 
+													Jobs:{{hotJobData['id']}}</span> </p>
+												<!-- <p class="job-type-sec">
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'contract';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'full-time';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'Part-time';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																	 </p> -->
+											</div>
+											<a class="mybuttonrtr" data-toggle="modal" data-target="#exampleModal"
+												(mouseenter)="ShowComment(hotJobData.comment,hotJobData.title);">
+												<p class="limit-word flashit">
+													<strong>{{hotJobData ['comment']}}</strong></p>
+											</a>
+											<!-- <div type="button" class="btn btn-primary btn-lg mybuttonrtr" data-toggle="modal" data-target="#modal1" id="b1">Launch Left Modal</div> -->
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-12" style="text-align:center;">
+
+							<button (click)="redirectToJobDetails('Hot Job','JobCategory');"
+								class="outline-btn post-a-job " style="float:none; box-shadow: 2px 3px 4px #333;">SEE
+								ALL HOT JOBS</button>
+
+						</div>
+
+					</div>
+					<!--tab One ends-->
+					 <!--Changes-->
+					<div class="tab-pane fade" id="hotjob-1" role="tabpanel" aria-labelledby="hotjob-tab">
+						<div class="col-md-12">
+							<div id="open-job-slider" class="owl-carousel owl-theme common-class-for-jobs wow fadeIn" style="display: block;">
+								<div id="loader" class="col-md-12">
+									<p style="text-align:center;"><img class="loading-img"
+										src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader"></p>
+								  </div>
+								<div class="item hotjobs">
+									<div *ngFor="let hotJobData of hotJobDataArr" class="employer-item col-md-2"
+										style="cursor: pointer;">
+
+										<!-- <div class="col-md-1 fav-like-icon">
+																	 <a href="javascript:void(0);"><i class="fa fa-heart"></i></a>
+																 </div> -->
+
+										<div class="col-md-12 employer-image no-padding"
+											(click)="redirectToJobDetails(hotJobData['id'],'hotJobs')">
+											<div *ngIf="hotJobData.logo_path != ''; else defaultLogo; ">
+												<img alt="ErrorToLoad" [src]="hotJobData.logo_path"
+													class="large-size-logo" style="width:100%; height:100px;">
+											</div>
+											<ng-template #defaultLogo>
+												<img alt="Techzenbam"
+													src="assets/frontend-style-script/img/logo/logo-placeholder.jpg"
+													class="large-size-logo" style="width:100%; height:100px;">
+											</ng-template>
+										</div>
+
+										<div class="col-md-12 job-heading">
+											<div (click)="redirectToJobDetails(hotJobData['id'],'hotJobs')">
+												<h3 title="{{hotJobData['openTitle']}}" class="employer-title">
+													{{hotJobData['openTitle']}}</h3>
+												<p title="{{hotJobData['addressCity']}}">{{hotJobData['compnyname']}},
+													<span class="location">{{hotJobData['addressCity']}}</span></p>
+												<p class="salary-amount"><span class="badge badge-danger">Open
+														Positions:
+														{{hotJobData['totalPositions']}}</span> </p>
+												<!-- <p class="job-type-sec">
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'contract';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'full-time';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																			<a href="#"  *ngIf="hotJobData.employmentType == 'Part-time';" class="mj_btn ">{{hotJobData['employmentType']}}</a>
+																	 </p> -->
+											</div>
+											<a class="mybuttonrtr" data-toggle="modal" data-target="#exampleModal"
+												(mouseenter)="ShowComment(hotJobData.comment,hotJobData.title);">
+												<p class="limit-word flashit">
+													<strong>{{hotJobData ['comment']}}</strong></p>
+											</a>
+											<!-- <div type="button" class="btn btn-primary btn-lg mybuttonrtr" data-toggle="modal" data-target="#modal1" id="b1">Launch Left Modal</div> -->
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+				</div>
+					<!--tab two-->
+					<div class="tab-pane fade" id="profile-1" role="tabpanel" aria-labelledby="profile-tab">
+
+						<div class="col-md-12">
+
+							<div id="employer-slider" class="owl-carousel owl-theme common-class-for-jobs  wow fadeIn">
+
+								<div class="item" *ngFor="let compnyDatas of homeDataArr['compnyList']">
+
+									<div class="employer-item col-md-2" *ngFor="let compnyData of compnyDatas"
+										style="cursor: pointer; padding: 20px 15px;"
+										(click)="redirectToJobDetails(compnyData['compnyname'],'compnyname')">
+
+
+										<!-- <div class="col-md-1 fav-like-icon">
+																		<a href="javascript:void(0);"><i class="fa fa-heart"></i></a>
+																	</div> -->
+
+										<div class="col-md-12 employer-image no-padding">
+											<div *ngIf="compnyData.logo_path != ''; else defaultLogo; ">
+												<img alt="ErrorToLoad" [src]="compnyData.logo_path"
+													class="large-size-logo" style="width:100%; height:100px;">
+											</div>
+											<ng-template #defaultLogo>
+												<img alt="Techzenbam"
+													src="assets/frontend-style-script/img/logo/logo-placeholder.jpg"
+													class="large-size-logo" style="width:100%; height:100px;">
+											</ng-template>
+										</div>
+
+										<div class="col-md-12 job-heading">
+											<!-- <h3 class="employer-title"> {{compnyData['compnyname']}}</h3> -->
+											<!-- <h3 class="employer-title"> {{compnyData['openTitle']}}</h3>
+																			<p><span class="location">{{compnyData['addressCity']}}</span></p> -->
+											<!-- <p class="job-type-sec">
+																				<a href="#"  *ngIf="compnyData.employmentType == 'contract';" class="mj_btn">{{compnyData['employmentType']}}</a>
+																				<a href="#"  *ngIf="compnyData.employmentType == 'full-time';" class="mj_btn">{{compnyData['employmentType']}}</a>
+																				<a href="#"  *ngIf="compnyData.employmentType == 'Part-time';" class="mj_btn">{{compnyData['employmentType']}}</a>
+																			</p> -->
+
+											<p class="salary-amount" style="margin:8px 0px 2px 0px;"><span
+													class="badge badge-danger"
+													style="font-size: 12px; padding: 2px 5px;">Open Positions:
+													{{compnyData['totalPositions']}}</span> </p>
+											<small><strong>View Now</strong></small>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-12" style="text-align:center;">
+							<button (click)="redirectToJobDtl();" class="outline-btn post-a-job "
+								style="float:none; box-shadow: 2px 3px 4px #333;">SEE ALL JOBS</button>
+						</div>
+
+
+					</div>
+					<!--tab two end-->
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+		</div>
+		<!-- /Row1 -->
+
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /hot jobs -->
+
+
+
+<!-- Numbers -->
+<div id="numbers" class="section sm-padding">
+
+	<!-- Background Image -->
+	<div class="bg-img-number" style="background-image: url('assets/frontend-style-script/img/background2.jpg');">
+		<div class="overlay"></div>
+	</div>
+	<!-- /Background Image -->
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<div class="counter">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+							<div class="employees">
+								<!-- <p><img src="assets/frontend-style-script/img/businessmen-having-a-meeting.png" style="width:80px;"></p> -->
+								<p><span class="counter-count"
+										*ngIf="homeDataArr['registeredRecCount']">{{homeDataArr['registeredRecCount'][0].cnt}}</span><span
+										class="plus-sign">+</span></p>
+								<p class="wow bounceInUp employee-p">Registered Recruiters</p>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+							<div class="customer">
+								<!-- <p><img src="assets/frontend-style-script/img/reg-employer.png" style="width:80px;"></p> -->
+								<p><span class="counter-count"
+										*ngIf="homeDataArr['registeredEmpCount']">{{homeDataArr['registeredEmpCount'][0].cnt}}</span><span
+										class="plus-sign">+</span></p>
+								<p class="wow bounceInUp customer-p">Registered Employers</p>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+							<div class="design">
+								<!-- <p><img src="assets/frontend-style-script/img/place-candi.png" style="width:80px;"></p> -->
+								<p><span class="counter-count"
+										*ngIf="homeDataArr['placedCandidateCount']">{{homeDataArr['placedCandidateCount'][0].totCnt}}</span>
+									<span class="plus-sign">+</span></p>
+								<p class="wow bounceInUp design-p">Placed Candidates</p>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+							<div class="order">
+								<!-- <p><img src="assets/frontend-style-script/img/hiring-white.png" style="width:80px;"></p> -->
+								<p><span class="counter-count"
+										*ngIf="homeDataArr['totalJobListings']">{{homeDataArr['totalJobListings'][0].jobTotCnt}}</span>
+									<span class="plus-sign">+</span></p>
+								<p class="wow bounceInUp order-p">Total Jobs</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /Row -->
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /Numbers -->
+
+
+<!-- tranding-industry  is display none for few days-->
+<div id="tranding-industry" class="section sm-padding bg-grey" style="display:none;">
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Row -->
+		<div class="row">
+			<!-- Section header -->
+			<div class="section-header text-center">
+				<h2 class="wow slideInUp title">TRENDING INDUSTRIES</h2>
+
+			</div>
+			<!-- /Section header -->
+		</div>
+
+		<div class="row" *ngFor="let trendingIndustry of homeDataArr['trendingIndustries']">
+
+			<div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let trendingInd of trendingIndustry">
+				<div class="wow bounceInUp item-category" style="cursor: pointer;"
+					(click)="redirectToJobDetails(trendingInd['StreamName'],'crStreamName')">
+					<span class="category-icon theme-color"><i class="fa fa-code"></i></span>
+					<div class="category-info">
+						<h3 class="category-title"><a href="javascript:void(0);"
+								(click)="redirectToJobDetails(trendingInd['StreamName'],'crStreamName')">{{trendingInd['StreamName']}}</a>
+						</h3>
+						<div (click)="redirectToJobDetails(trendingInd['StreamName'],'crStreamName')"
+							class="total-job theme-color">
+							{{trendingInd['totalJobs']}} jobs</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- /Row1 -->
+
+
+	</div>
+	<!-- /Container -->
+
+</div>
+<!-- /tranding-industry -->
+
+<!-- video by emagine-->
+<div id="video-information" class="section  bg-grey">
+
+
+
+	<div class="row video-row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="row">
+				<div
+					class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 mj_toppadder80 mj_bottompadder50">
+					<div class="mj_videosection_data mj_toppadder50">
+						<h1 style="padding:0px;">What our partners have to say about us</h1>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="row" style="line-height: 0px;">
+				<!-- <video width="1200" height="482">
+					<source src="https://youtu.be/NQ6QJvNrCOw">
+				</video> -->
+				<iframe width="100%" height="400" src="https://youtube.com/embed/NQ6QJvNrCOw">
+				</iframe>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+<!-- /video by emagine-->
+<!-- video by emagine-->
+<div id="video-information-1" class="section">
+
+	<div class="row video-row">
+
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="row" style="line-height: 0px;">
+				<video width="100%" controls>
+					<source src="../../assets/video/IMG_6532_TRIM.MOV" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="row">
+				<div
+					class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 mj_toppadder80 mj_bottompadder50">
+					<div class="mj_videosection_data mj_toppadder50">
+						<h1>HOW DOES THE MARKETPLACE WORK</h1>
+						<p>No empanelment worries!! Stop hunting for clients!! Emagine will provide access to Top
+							clients across
+							India with Zero BD cost.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+
+</div>
+<!-- /video by emagine-->
+
+
+
+
+<!-- Modal -->
+<div class="modal fade top-offers" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" style="border-bottom: 0px solid #e5e5e5;">
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" style="height:280px;">
+				<h2>{{showTitle}}</h2>
+				<p>{{showComment}}</p>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Modal 1 -->
+<!-- <div class="modal fade mm" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-left">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                    </button>
+                     <h4 class="modal-title" id="modal1Label">Left Modal title</h4>
+
+                </div>
+                <div class="modal-body">Some Demo For Modal 1</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+	</div> -->
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

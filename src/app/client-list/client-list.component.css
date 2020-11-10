@@ -1,0 +1,25 @@
+ul.secondary-menu {
+  float: right;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+ul.secondary-menu li {
+  display: inline-block;
+}
+ul.secondary-menu li a {
+  color: #fff;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+ul.secondary-menu li a:hover {
+  text-decoration: none;
+  color: #f8f8f8;
+}
+
+ul.secondary-menu li a:focus {
+  text-decoration: none;
+  color: #fcf683;
+}

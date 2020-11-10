@@ -1,0 +1,239 @@
+
+.bg-img-company-reg .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .7;
+    background: #2a3644;
+}
+
+.features-sample .box {
+    padding: 40px;
+    height:200px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+    background: rgba(255,255,255,0.7);
+    transition: 0.4s;
+}
+.features-sample .icon {
+    float: left;
+}
+
+.features-sample h4 {
+    margin-left: 100px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.features-sample .icon i {
+    color: #666666;
+    font-size: 62px;
+    transition: 0.5s;
+    line-height: 1;
+}
+
+.features-sample .icon i:before {
+    background: #ce1d0b;
+    background: linear-gradient(45deg, #ce1d0b 0%, #ff918f 100%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+.features-sample h4 a {
+    color: #111;
+}
+
+.features-sample p {
+    font-size: 14px;
+    margin-left: 100px;
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+
+.dark-bg-heading{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 45px;
+    font-size: 33px;
+}
+
+.bottom-controls #controls-container{
+    display:none !important;
+}
+#controls-footer {
+    background-color: #fff !important;
+    display: none;
+}
+
+#signup-subscription .box {
+    padding: 40px;
+    margin-bottom: 0px;
+    box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+    background: #fff;
+    text-align: center;
+}
+#signup-subscription .featured h3 {
+    font-weight: 400;
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+#signup-subscription .featured h5 {
+    font-size: 28px;
+    color: #bb281e;
+    font-weight: 300;
+}
+#signup-subscription ul {
+    padding: 0;
+    list-style: none;
+    color: #999;
+    text-align: left;
+    line-height: 20px;
+    margin-left: 22px;
+}
+
+#signup-subscription ul li {
+    padding-bottom: 12px;
+    text-indent: -10px;
+}
+#signup-subscription ul i {
+    color: #cd8d1d;
+    font-size: 18px;
+    padding-right: 4px;
+}
+#signup-subscription .featured .get-started-btn {
+    background: linear-gradient(45deg, #e39a1b, #cd1d4f);
+}
+#signup-subscription .get-started-btn {
+    background: #515e61;
+    display: inline-block;
+    padding: 6px 30px;
+    border-radius: 20px;
+    color: #fff;
+    transition: none;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Montserrat", sans-serif;
+}
+
+#signup-subscription .featured {
+    border: 2px solid #bb281e;
+}
+
+.features-sample p.subscription-plan{
+    margin-left: 0px;
+    color: #ececec;
+    font-size: 26px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 0px;
+    padding: 20px;
+    line-height: 39px;
+}
+
+.features-sample .dark-bg-heading{
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    line-height: 46px;
+    font-size: 41px;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+
+
+#look-for-hot-jobs .features-img {
+    padding-top: 63px;
+    margin-top: -50px;
+}
+
+#look-for-hot-jobs .box {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#look-for-hot-jobs .box .icon {
+    margin-bottom: 10px;
+}
+
+#look-for-hot-jobs .box .icon i {
+    color: #666666;
+    font-size: 40px;
+    transition: 0.5s;
+}
+
+#look-for-hot-jobs .title a {
+    color: #111;
+}
+
+
+#look-for-hot-jobs .title {
+    font-weight: 300;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+#look-for-hot-jobs .icon i::before {
+    background: #1dc8cd;
+    background: linear-gradient(45deg, #ce1d0b 0%, #ff918f 100%);
+    background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#look-for-hot-jobs .section-header .section-title {
+    font-size: 32px;
+    color: #111;
+    text-align: center;
+    font-weight: 400;
+}
+
+  /**********************************MEDIA QUERIES*********************************************/
+  
+  @media only screen and (max-width: 767px) {
+    .features-sample .box {
+        padding: 40px;
+        height:auto;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+        background: rgba(255,255,255,0.7);
+        transition: 0.4s;
+    }
+    
+    .features-sample .icon {
+      float: none;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    .features-sample h4, .features-sample p {
+      margin-left: 0;
+      text-align: center;
+    }
+
+    h2.header-banner-heading {
+        color: #ffffff !important;
+        font-family: "Open Sans", Sans-serif !important;
+        font-size: 32px !important;
+        font-weight: 600 !important;
+        text-transform: capitalize !important;
+        margin: 80px auto !important;
+        text-align: center !important;
+    }
+    
+  }
+
+
+  .flowchart:after{
+    position: absolute;
+    content: "";
+    width: 150%;
+    height: 51px;
+    background: #ffffff;
+    bottom: -5px;
+    left: 0;
+}

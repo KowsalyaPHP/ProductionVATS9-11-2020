@@ -1,0 +1,336 @@
+<!-- Header -->
+<header id="registration-list-page" class="sub-menus">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+        <!-- <li><a [routerLink]="['/employerlist']">Employer List</a></li> -->
+        <li *ngIf="loggedIn ; else showLogin;">
+          <a [routerLink]="['/logout']">Logout</a>
+        </li>
+        <ng-template #showLogin>
+          <li>
+            <a [routerLink]="['/login']">Login</a>
+          </li>
+        </ng-template>
+        <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf="usrtype == 'Admin'">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-right: 5px;">
+          <ul class="secondary-menu">
+            <li><a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li>
+            <li><a [routerLink]="['/employerlist']">Registered Employers</a></li>
+            <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+            <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li>
+            <li><a [routerLink]="['/category-logs']">Category Logs</a></li>
+            <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+            <li><a [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+            <!-- <li><a style="color: #fcf683;" [routerLink]="['/job-details']">Jobs List</a></li> 
+                        <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</header>
+<!-- /Header -->
+
+
+<!-- feature-details -->
+<div id="feature-details" class="section md-padding bg-grey-dark">
+
+  <!-- Container -->
+  <div class="container">
+
+    <div class="row" style="display: flex;">
+      <div class="col-lg-6">
+        <h3 style="text-align:left; margin:-33px 0px; font-size:22px;">Client Dashboard - {{usernm}}</h3>
+      </div>
+      <div class="col-lg-6">
+        <a class="btn btn-danger apply-btton pull-right" style="margin:-33px 0px; margin-bottom: 10px "
+          href="https://emagine.mynexthire.com/employer/ui/html/wow/wow.html#/login" target="_blank">Post New
+          Jobs</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 filtered-view-listing">
+        <div id="loader" class="col-md-12">
+          <p style="text-align:center;"><img class="loading-img"
+              src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader"></p>
+        </div>
+        <div class="section-header text-center" id="NojobFound" style="display: none;">
+          <h2 class="wow slideInUp title">No Open Requisitions Available</h2>
+        </div>
+
+        <div class="panel panel-default" *ngIf="jobDtlsArr && jobDtlsArr.length > 0">
+          <div class="panel-heading accordion-toggle" style="padding-right:5px;">
+            <div class="panel-title font-lato-bold">
+              <table style="width: 98%">
+                <tr>
+                  <th style="width: 55%;">
+                    Title
+                  </th>
+                  <th style="width: 15%; text-align: center">
+                    Status
+                  </th>
+                  <th style="width: 15%;text-align: center">
+                    Location
+                  </th>
+                  <th style="width: 15%;text-align: right">
+                    Posted Date
+                  </th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div id="collapse{{ i }}" class="panel-collapse collapse">
+            <div class="panel-body faq-panel-body font-lato-regular">
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default" *ngFor="let jobData of jobDtlsArr; let i = index">
+          <div class="panel-heading accordion-toggle" style="padding-right:5px;">
+            <div class="panel-title accordion-toggle collapsed font-lato-bold" data-toggle="collapse"
+              [attr.data-parent]="'#faqaccordion' + idx" [attr.data-target]="'#collapse' + i">
+              <table style="width: 98%">
+                <tr>
+                  <td style="width: 55%; color: brown;">
+                    {{jobData['openingId']}} - {{jobData['openTitle']}}({{jobData['openPositions']}}
+                    Positions)
+                  </td>
+                  <td style="width: 15%; text-align: center">
+                    {{jobData['statusName']}}
+                  </td>
+                  <td style="width: 15%;text-align: center">
+                    {{jobData['address']}}
+                  </td>
+                  <td style="width: 15%;text-align: right">
+                    {{jobData['activationDate']}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div id="collapse{{ i }}" class="panel-collapse collapse">
+            <div class="panel-body faq-panel-body font-lato-regular">
+              <div class="row">
+
+                <div class="col-md-3 iconic-info">
+                  <span>
+                    <i class="fa fa-inr round"></i>
+                  </span>
+                  <span>
+                    <p>{{jobData['ctcCurrency']}}</p>
+                    <p>{{jobData['ctcBandLowEnd']}} - {{jobData['ctcBandHighEnd']}}</p>
+                  </span>
+                </div>
+                <div class="col-md-3 iconic-info">
+                  <span>
+                    <i class="fa fa-black-tie round"></i>
+                  </span>
+                  <span>
+                    <p>Job Type</p>
+                    <p>{{jobData['employmentType']}}</p>
+                  </span>
+                </div>
+                <div class="col-md-3 iconic-info">
+                  <span>
+                    <i class="fa fa-building-o round"></i>
+                  </span>
+                  <span>
+                    <p>Company</p>
+                    <p>{{jobData['compnyname']}}</p>
+                  </span>
+                </div>
+                <div class="col-md-3 iconic-info">
+                  <span>
+                    <i class="fa fa-clock-o round"></i>
+                  </span>
+                  <span>
+                    <p>Experience</p>
+                    <p>{{jobData['yrsOfExpMin']}} - {{jobData['yrsOfExpMax']}} yrs</p>
+                  </span>
+                </div>
+
+              </div>
+              <div class="row pipeline-count">
+                <div class="col-md-8">
+                  <table class="pipeline-table">
+                    <thead>
+                      <tr>
+                        <th class="text-left col-pipeline">
+                          Pipeline:
+                        </th>
+                        <th>
+                          So
+                        </th>
+                        <th>
+                          Sc
+                        </th>
+                        <th>
+                          A
+                        </th>
+                        <th>
+                          HR
+                        </th>
+                        <th>
+                          O
+                        </th>
+                        <th>
+                          J
+                        </th>
+                        <th>
+                          E
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-left col-pipeline">
+                          For the job:
+                        </td>
+                        <td>
+                          {{jobData['sourcing_count']}}
+                        </td>
+                        <td>
+                          {{jobData['screening_count']}}
+                        </td>
+                        <td>
+                          {{jobData['assessment_count']}}
+                        </td>
+                        <td>
+                          {{jobData['negotiation_count']}}
+                        </td>
+                        <td>
+                          {{jobData['offered_count']}}
+                        </td>
+                        <td>
+                          {{jobData['joined_count']}}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-4">
+
+                  <table class="cvcount-table">
+                    <thead>
+                      <tr>
+                        <th class="text-left">
+                          CV
+                        </th>
+                        <th>
+                          Limit
+                        </th>
+                        <th>
+                          Submitted
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-left">
+                          For the job:
+                        </td>
+                        <td>
+                          {{jobData['max_count']}}
+                        </td>
+                        <td>
+                          {{ getTotalCount(jobData['sourcing_count'], jobData['screening_count'], jobData['assessment_count'], jobData['negotiation_count'], jobData['offered_count'], jobData['joined_count'])}}
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- /Row2 -->
+
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /feature-details -->
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade top-offers" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0px solid #e5e5e5;">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:280px;">
+        <h2>{{showTitle}}</h2>
+        <p>{{showComment}} </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

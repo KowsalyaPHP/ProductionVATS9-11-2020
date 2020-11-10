@@ -1,0 +1,417 @@
+
+<!-- Header -->
+<header id="registration-list-page">
+		
+  <!-- Nav -->
+  <nav id="nav" class="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand" style="margin-top: 6px;">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+            <ul class="dropdown" style="position:absolute;">
+                <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+                <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+            </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <!-- <li><a [routerLink]="['/employerlist']">Employer List</a></li> -->
+        <li><a (click)="logout()" style="cursor:pointer;">Log Out</a></li>
+        <li><a style="color:goldenrod;">{{userName}}({{userType}})</a></li>
+      </ul>
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <section class="fm-page-title fm-page-button" *ngIf = "userType == 'Admin'">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12" style="padding-right: 5px;">
+                 <ul class="secondary-menu">
+                    <li><a style="color: #fcf683;" [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li> 
+                    <li><a  [routerLink]="['/employerlist']">Registered Employers</a></li>
+                    <li><a [routerLink]="['/clientlist']">RoCk Client</a></li> 
+                    <li><a [routerLink]="['/job-category']">Categorize Jobs</a></li> 
+                    <li><a [routerLink]="['/category-logs']">Category Logs</a></li>
+                    <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+                    <li><a [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+                    <!-- <li><a [routerLink]="['/job-details']">Jobs List</a></li> 
+                    <li><a [routerLink]="['/job-category']">Job Types</a></li>  -->
+                 </ul>    
+            </div>
+          </div>
+      </div>
+  </section>
+
+</header>
+<!-- /Header -->
+
+  <!-- About -->
+<div id="feature-details" class="section xs-padding feature-list bg-grey-dark" >
+
+  <!-- Container -->
+  <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 style="text-align:left; margin:20px 0px; font-size:22px;">Applications</h3> 
+            </div>
+        </div>
+
+    <div class="row" style="margin-top:50px;">                       
+        <div class="col-md-12 tab-dashboard">
+                                     
+            <div class="panel" style="margin-bottom:80px;">  
+                <header class="panel-heading tab-bg-dark-navy-blue" style="margin-top: -55px;">
+                    <ul class="nav nav-tabs" style="margin-bottom:0px;">
+                        <li class="active">
+                          <a  href="#1" data-toggle="tab">Employers List</a>
+                        </li>
+                        <li><a href="#2" data-toggle="tab">Recruiters List</a>
+                        </li>
+                    </ul>
+                 </header> 
+                <div class="panel-body">
+                    <div class="col-md-12">
+                       <div id="exTab2" class="">	
+                            
+                             <div class="tab-content">
+
+                          <div class="tab-pane active" id="1">
+                            <h3 style="padding:20px;margin-top: -15px;font-size: 18px;">Employers List</h3>
+                          
+                          
+                              <div class="col-md-12">
+
+                                  <table id="employerTable" *ngIf="regDataArr!=[]" class="table table-striped table-bordered table-hover table-client-dashboard" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">id</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Company Name</th>
+                                            <!-- <th>Company Website</th> -->
+                                            <th>Contact Number</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of regDataArr">  
+                                    
+                                            <td style="display:none"> <input value={{item.id}}> </td>
+                                            <td><a style="cursor: pointer;" (click) = "getEmployerDetails(item.id)" >{{item.firstname}}</a></td>
+                                            <td>{{item.lastname}}</td>
+                                            <td>{{item.companyname}}</td>
+                                            <!-- <td>{{item.company_website}}</td> -->
+                                            <td>{{item.contact_number}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td>
+                                              <select id="status" class="form-control" name="status" #statusVal (change)="changeStatus(item.id,statusVal.value,item.email)" style="width:109px;display:inline-block;" >
+                                                  <option *ngIf="item.status=='Pending'" value="Pending" [attr.selected]="item.status=='Pending' ? true :null ">Pending</option>            
+                                                  <option value="Approve" [attr.selected]="item.status=='Approve' ? true :null ">{{item.appStatustxt}}</option>
+                                                  <option value="Reject" [attr.selected]="item.status=='Reject' ? true :null ">{{item.rejStatustxt}}</option>                
+                                              </select>
+                                              <img [attr.id]="'loaderEmp_' + item.id" [attr.name]="'loaderEmp_' + item.id" src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader" style="width:20px;margin:0px auto;display:none;">
+                                             </td>
+                                        </tr>	
+                                    </tbody>
+                                  </table>
+                                </div>                    
+                          </div>
+
+                          <div class="tab-pane" id="2">
+                              <h3 style="padding:20px;margin-top: -15px;font-size: 18px;">Recruiters List</h3>
+
+                              <div class="col-md-12">
+
+                                  <table id="recruiterTable" *ngIf="recDataArr!=[]" class="table table-striped table-bordered table-hover table-client-dashboard" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="display:none">id</th>
+                                            <th>Company Name</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                            <th>Team Size</th>
+                                            <th>Owner Of Firm</th>
+                                            <th>Owner Email</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         
+                                          <tr *ngFor="let item of recDataArr">  
+                                            <td style="display:none"> <input value={{item.id}}> </td>
+                                            <td><a style="cursor: pointer;" (click) = "getRecruiterDetails(item.id)" >{{item.company_name}}</a></td>
+                                            <td>{{item.company_address}}</td>
+                                            <td>{{item.city}}</td>
+                                            <td>{{item.team_size}}</td>
+                                            <td>{{item.owner_name}}</td>
+                                            <td>{{item.email}}</td>
+                                            <td>
+                                              <select id="status" class="form-control" name="status" #statusVal (change)="changeRecStatus(item.id,statusVal.value,item.email)" style="width:119px;display:inline-block;">
+                                                  <option *ngIf="item.status=='Pending'" value="Pending" [attr.selected]="item.status=='Pending' ? true :null ">Pending</option>            
+                                                  <option value="Approve" [attr.selected]="item.status=='Approve' ? true :null ">{{item.appStatustxt}}</option>
+                                                  <option value="Reject" [attr.selected]="item.status=='Reject' ? true :null ">{{item.rejStatustxt}}</option>                
+                                              </select>
+                                               <img [attr.id]="'loaderRec_' + item.id" [attr.name]="'loaderRec_' + item.id" src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader" style="width: 22px;margin:0px auto;display:none;">
+                                            </td>
+                                        </tr>	
+                                        
+                                    </tbody>
+                                    
+                                   </table>
+                                </div>
+
+                                      </div>
+                                   </div>
+                              </div>
+            
+                    </div>                   
+                </div>
+            </div>
+        </div>  
+
+
+
+
+      
+      </div>
+    <!-- /Row2 -->
+    
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /About -->
+
+
+
+<!-- Modal for Employer Details-->
+<button type="button" #openEmployerData id="openEmployerData" style="display:none;" class="btn btn-info btn-lg"
+        data-toggle="modal" data-target="#employerData">Open Modal</button>
+<div id="employerData" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:480px; margin:100px auto; overflow: auto;">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" style="font-size:16px; font-weight:bold;">Employer Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-24px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <div class="modal-body">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+         
+          <table id="recruiterTable" *ngIf="employerDetailsArr!=[]" class="table table-striped table-bordered table-hover table-client-dashboard" style="width:100%">
+               <tbody>   
+                     <tr > 
+                      <td><b>First Name</b></td>
+                      <td *ngIf="employerDetailsArr">{{employerDetailsArr.firstname}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Last Name</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.lastname}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Company Name</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.companyname}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Company Website</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.company_website}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Company Address</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.company_address}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Country</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.country}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>State</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.state}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>City</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.city}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Pincode</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.pincode}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Landline Number</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.contact_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Mobile Number</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.mobile_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Email Id</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.email}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Name</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.SPOC_name}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Mobile Number</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.SPOC_mobile_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Email Id</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.SPOC_email}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Industry</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.industry}}</td>
+                    </tr>
+
+                    <tr > 
+                        <td><b>Number Of Employees</b></td>
+                        <td *ngIf="employerDetailsArr">{{employerDetailsArr.employee_number}}</td>
+                    </tr>
+                  
+              </tbody>
+              
+             </table>
+
+       </div>
+      
+      </div>
+  
+    </div>
+  </div>
+
+
+
+  <!-- Modal for Recruiters Details-->
+
+  <button type="button" #openRecruiterData id="openRecruiterData" style="display:none;" class="btn btn-info btn-lg"
+        data-toggle="modal" data-target="#recruiterData">Open Modal</button>
+
+<div id="recruiterData" #recruiterData class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:480px; margin:100px auto;">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" style="font-size:16px; font-weight:bold;">Recruiter Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:-24px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <div class="modal-body">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+         
+          <table id="recruiterTable" *ngIf="recruiterDetailsArr!=[]" class="table table-striped table-bordered table-hover table-client-dashboard" style="width:100%">
+               <tbody>   
+                     <tr > 
+                      <td><b>Company Name</b></td>
+                      <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.company_name}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Company Website</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.company_website}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Address</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.company_address}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>City</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.city}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Team Size</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.team_size}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Specialised Sector</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.specialised_sector}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>State</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.state}}</td>
+                    </tr>
+                    <!-- <tr > 
+                        <td><b>Company Registration Number</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.registration_number}}</td>
+                    </tr> -->
+                    <tr > 
+                        <td><b>GST Number</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.GST_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Owner of firm</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.owner_name}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>Owner Mobile Number</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.contact_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td *ngIf="recruiterDetailsArr"><b>Owner Email Id</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.email}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Name</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.SPOC_name}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Mobile Number</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.SPOC_mobile_number}}</td>
+                    </tr>
+                    <tr > 
+                        <td><b>SPOC Email Id</b></td>
+                        <td *ngIf="recruiterDetailsArr">{{recruiterDetailsArr.SPOC_email}}</td>
+                    </tr>
+                
+              </tbody>
+              
+             </table>
+
+       </div>
+      
+      </div>
+  
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->
+

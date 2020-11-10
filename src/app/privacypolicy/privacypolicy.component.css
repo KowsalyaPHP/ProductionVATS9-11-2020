@@ -1,0 +1,15 @@
+p{
+    margin: 12px 70px;
+    text-align: justify;
+    line-height: 25px;
+}
+ul{
+    list-style: disc;
+    margin: inherit;
+    padding-left: 130px;
+    line-height: 25px;
+    padding-right: 50px;
+}
+h2{
+    margin-left: 70px;
+}

@@ -1,0 +1,497 @@
+/* CSS for Required componant*/
+
+.ng-valid[required], .ng-valid.required  {
+    /*border-left: 5px solid #42A948 !important; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+   /* border-left: 5px solid #a94442 !important; /* red */
+  }
+
+/* CSS for optional componant*/
+
+  .form-control.optional {
+  /*  border-left: 5px solid #42A948 !important;  /* green */
+  }
+
+  .form-control.ng-invalid.optional  {
+    /*border-left: 5px solid #a94442 !important; /* green */
+  }
+
+
+/*moving icons*/
+
+.moving-icons {
+  position: relative;
+}
+
+.object1 {
+  position: absolute;
+  top: 56%;
+  left: 20%;
+}
+
+.object2 {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+}
+
+.object3 {
+  position: absolute;
+  top: 78%;
+  right: 22%;
+}
+
+.object6 {
+  position: absolute;
+  top: 50%;
+  right: 17%;
+}
+
+.object4 {
+  position: absolute;
+  top: 100%;
+  left: 27%;
+}
+
+.object5 {
+  position: absolute;
+  bottom: -9%;
+  left: 39%;
+
+}
+
+.object7 {
+  position: absolute;
+  top: 111%;
+  left: 15%;
+}
+
+.object8 {
+  position: absolute;
+  top: 122%;
+  left: 64%;
+}
+
+/*rotate*/
+
+.rotate {
+  -webkit-animation: rotation 10s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+.rotate2 {
+  -webkit-animation: rotation2 14s infinite linear;
+}
+
+@-webkit-keyframes rotation2 {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+
+/*bounce*/
+
+
+/*rotate*/
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-animation: bounce 3s infinite linear;
+}
+
+.bounce1 {
+  -webkit-animation: bounce 2s infinite linear;
+}
+
+.bounce2 {
+  -webkit-animation: bounce 4s infinite linear;
+}
+
+.bounce3 {
+  -webkit-animation: bounce 6s infinite linear;
+}
+
+.bounce4 {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-animation: bounce 4s infinite linear;
+}
+
+.bounce5 {
+  -webkit-animation: bounce 7s infinite linear;
+}
+
+@-webkit-keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      -webkit-transform: translateY(0);
+  }
+  40% {
+      -webkit-transform: translateY(-30px);
+  }
+  60% {
+      -webkit-transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+  }
+  40% {
+      -webkit-transform: translateY(-30px);
+      transform: translateY(-30px);
+  }
+  60% {
+      -webkit-transform: translateY(-15px);
+      transform: translateY(-15px);
+  }
+}
+
+@-webkit-keyframes bounce4 {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      -webkit-transform: translateY(0);
+  }
+  40% {
+      -webkit-transform: translateY(-70px);
+  }
+  60% {
+      -webkit-transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce4 {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+  }
+  40% {
+      -webkit-transform: translateY(-70px);
+      transform: translateY(-70px);
+  }
+  60% {
+      -webkit-transform: translateY(-15px);
+      transform: translateY(-15px);
+  }
+}
+
+
+
+
+#employer-page {
+
+  position: relative;
+  width: 100%;
+  height:100%;
+
+}
+#employer-page:before{
+    background-image: url('../../assets/frontend-style-script/img/background2.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll;
+    content:"";
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*background-color: rgba(0,0,0,0.6);  Black background with opacity */
+    z-index: 0; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+#employer-page:after{
+  content:"";
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+  z-index: 1; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+
+
+#employer-page .home-wrapper{
+  position: relative;
+  z-index: 99;
+}
+
+#employer-page .home-wrapper h2.header-banner-heading {
+  color: #ffffff !important;
+    font-family: "Open Sans", Sans-serif !important;
+    font-size: 50px !important;
+    font-weight: 300 !important;
+    text-transform: capitalize !important;
+    margin: 30% auto 0px auto !important;
+    padding: 20px 50px 10px 50px;
+    text-align: left !important;
+}
+
+#employer-page .home-wrapper p.header-banner-sub-heading {
+  color: #ffffff !important;
+  font-family: "Open Sans", Sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  padding: 0px 50px 20px 50px;
+}
+
+#employer-page .card{
+  background:#fff;
+  padding: 3em 2em 2em;
+  height: 100%;
+  position: relative;
+  margin: 23px;
+}
+.employer-form .form-group input[type="text"],
+.employer-form .form-group input[type="email"],
+.employer-form .form-group input[type="number"],
+.employer-form .form-group input[type="password"]{
+  height: 40px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dad8d8;
+  color: #354052;
+  padding: 0px 10px;
+  border-radius:0px;
+  opacity:1;
+  box-shadow:none;
+}
+
+.employer-form .form-group select{
+  border-radius:0px;
+  background: #fff;
+  border: 1px solid #dad8d8;
+}
+
+.invalid-feedback{
+  font-size: 11px;
+  color: #d03f3f;
+  padding-left: 3px;
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size:11px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size:11px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size:11px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size:11px;
+}
+
+select option:first-child{
+  font-size:11px;
+}
+
+
+
+
+/***************Fog*************************/
+
+/* ---------- Fog ---------- */
+.fogwrapper {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+  filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+}
+#foglayer_01, #foglayer_02, #foglayer_03 {
+  height: 100%;
+  position: fixed;
+  width: 200%;
+}
+#foglayer_01 .image01, #foglayer_01 .image02,
+#foglayer_02 .image01, #foglayer_02 .image02,
+#foglayer_03 .image01, #foglayer_03 .image02 {
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+#foglayer_01 {
+  -webkit-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+  -moz-animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+  animation: foglayer_01_opacity 10s linear infinite, foglayer_moveme 15s linear infinite;
+}
+#foglayer_02, #foglayer_03 {
+  -webkit-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+  -moz-animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+  animation: foglayer_02_opacity 21s linear infinite, foglayer_moveme 13s linear infinite;
+}
+
+/* ---------- Moving Fog ---------- */
+/*
+  'size: cover' || 'size: 100%'; results remain the same
+  'attachment: scroll' can be added or removed; results remain the same
+  'attachment: fixed' causing unexpected results in Chrome
+  'repeat-x' || 'no-repeat'; results remain the same
+*/ 
+#foglayer_01 .image01, #foglayer_01 .image02 {
+  background: url('../../assets/frontend-style-script/img/fog1.png') center center/cover no-repeat transparent;
+}
+#foglayer_02 .image01, #foglayer_02 .image02,
+#foglayer_03 .image01, #foglayer_03 .image02{
+  background: url('../../assets/frontend-style-script/img/fog2.png') center center/cover no-repeat transparent;
+}
+
+/* ---------- Keyframe Layer 1 ---------- */
+@-webkit-keyframes foglayer_01_opacity {
+  0% { opacity: .3; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .2; }
+}
+@-moz-keyframes foglayer_01_opacity {
+  0% { opacity: .3; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .2; }
+}
+@-o-keyframes foglayer_01_opacity {
+  0% { opacity: .2; }
+  22% { opacity: .5; }
+  40% { opacity: .28; }
+  58% { opacity: .4; }
+  80% { opacity: .16; }
+  100% { opacity: .5; }
+}
+@keyframes foglayer_01_opacity {
+  0% { opacity: .7; }
+  22% { opacity: .6; }
+  40% { opacity: .8; }
+  58% { opacity: .9; }
+  80% { opacity: .56; }
+  100% { opacity: .5; }
+}
+/* ---------- Keyframe Layer 2 ---------- */
+@-webkit-keyframes foglayer_02_opacity {
+  0% { opacity: .6; }
+  25% { opacity: .7; }
+  50% { opacity: .8; }
+  80% { opacity: .5; }
+  100% { opacity: .8; }
+}
+@-moz-keyframes foglayer_02_opacity {
+  0% { opacity: .6; }
+  25% { opacity: .7; }
+  50% { opacity: .6; }
+  80% { opacity: .7; }
+  100% { opacity: .8; }
+}
+@-o-keyframes foglayer_02_opacity {
+  0% { opacity: .6; }
+  25% { opacity: .7; }
+  50% { opacity: .7; }
+  80% { opacity: .8; }
+  100% { opacity: .6; }
+}
+@keyframes foglayer_02_opacity {
+  0% { opacity: .6; }
+  25% { opacity: .7; }
+  50% { opacity: .8; }
+  80% { opacity: .9; }
+  100% { opacity: .5; }
+}
+/* ---------- Keyframe Layer 3 ---------- */
+@-webkit-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .6; }
+  52% { opacity: .7; }
+  68% { opacity: .5; }
+  100% { opacity: .8; }
+}
+@-moz-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .4; }
+  52% { opacity: .6; }
+  68% { opacity: .6; }
+  100% { opacity: .8; }
+}
+@-o-keyframes foglayer_03_opacity {
+  0% { opacity: .8 }
+  27% { opacity: .5; }
+  52% { opacity: .6; }
+  68% { opacity: .8; }
+  100% { opacity: .8; }
+}
+@keyframes foglayer_03_opacity {
+  0% { opacity: .8; }
+  27% { opacity: .5; }
+  52% { opacity: .6; }
+  68% { opacity: .6; }
+  100% { opacity: .8; }
+}
+/* ---------- Keyframe moveMe ---------- */
+@-webkit-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@-moz-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@-o-keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+@keyframes foglayer_moveme {
+  0% { left: 0; }
+  100% { left: -100%; }
+}
+
+@media only screen
+  and (min-width: 280px)
+  and (max-width: 767px) {
+    #foglayer_01 .image01, #foglayer_01 .image02,
+    #foglayer_02 .image01, #foglayer_02 .image02,
+    #foglayer_03 .image01, #foglayer_03 .image02 {
+      width: 100%;
+    }
+  }

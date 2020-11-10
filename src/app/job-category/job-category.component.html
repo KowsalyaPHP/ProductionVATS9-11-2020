@@ -1,0 +1,538 @@
+
+<!-- Header -->
+<header id="registration-list-page" class="sub-menus">
+		
+    <!-- Nav -->
+    <nav id="nav" class="navbar">
+      <div class="container">
+  
+        <div class="navbar-header">
+          <!-- Logo -->
+          <div class="navbar-brand" style="margin-top: 6px;">
+            <a href="index.html">
+              <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+              <img class="logo-alt" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            </a>
+          </div>
+          <!-- /Logo -->
+  
+          <!-- Collapse nav button -->
+          <div class="nav-collapse">
+            <span></span>
+          </div>
+          <!-- /Collapse nav button -->
+        </div>
+  
+        <!--  Main navigation  -->
+        <ul class="main-nav nav navbar-nav navbar-right">
+          <li><a [routerLink]="['/']">Home</a></li>
+          <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+						<ul class="dropdown" style="position:absolute;">
+							<li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+							<li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+						</ul>
+					</li>
+          <li><a [routerLink]="['/about-us']">About</a></li>
+          <li><a [routerLink]="['/contact']">Contact</a></li>
+          <!-- <li><a [routerLink]="['/employerlist']">Employer List</a></li> -->
+          <li *ngIf = "loggedIn ; else showLogin;">
+            <a [routerLink]="['/logout']">Logout</a>
+          </li>
+          <ng-template #showLogin> 
+          <li>
+            <a [routerLink]="['/login']">Login</a>
+          </li>
+         </ng-template>
+         <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+        </ul>
+        <!-- /Main navigation -->
+  
+      </div>
+    </nav>
+    <!-- /Nav -->
+    
+    <section class="fm-page-title fm-page-button" *ngIf = "usrtype == 'Admin'">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="padding-right: 5px;">
+                   <ul class="secondary-menu">
+                      <li><a [routerLink]="['/app-registration-list']">Employer / Recruiter Applications </a></li> 
+                      <li><a [routerLink]="['/employerlist']">Registered Employers</a></li> 
+                      <li><a [routerLink]="['/clientlist']">RoCk Client</a></li>
+                      <li><a style="color: #fcf683;" [routerLink]="['/job-category']">Categorize Jobs</a></li> 
+                      <li><a [routerLink]="['/category-logs']">Category Logs</a></li> 
+                      <li><a [routerLink]="['/recruiter-logs']">Recruiter Logs</a></li>
+                      <li><a [routerLink]="['/ratecard']">RoCk Rate Card</a></li>
+                      <!-- <li><a [routerLink]="['/job-details']">Jobs List</a></li> 
+                      <li><a style="color: #fcf683;" [routerLink]="['/job-category']">Job Types</a></li>  -->
+                   </ul>    
+               </div>
+            </div>
+        </div>
+    </section>
+
+
+  </header>
+  <!-- /Header -->
+
+
+<!-- feature-details -->
+<div id="feature-details" class="section md-padding bg-grey-dark">
+
+  <!-- Container -->
+  <div class="container">
+
+      <div class="row">
+          <div class="col-lg-12">
+              <h3 style="text-align:left; margin:-33px 0px; font-size:22px;">Categorize Jobs</h3> 
+          </div>
+      </div>
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+        <div class="panel filter-collapsible">
+          <div class="panel-body">
+            <div class="panel-group" id="accordion">
+
+                <div class="panel">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseeight">
+                          <span class=""> Requisition Id </span> <span id="reqIdClearDot" name="reqIdClearDot" class="filtered-dot" style="display:none;"></span>
+                        </a>
+                        <a id="reqIdClear" name="reqIdClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('openingId')">clear</a>
+                      </h4>
+                    </div>
+                    <div id="collapseeight" class="panel-collapse collapse in">
+                      <div class="panel-body" >            
+                        <div class="search-filter-category">                                    
+                            <input type="text" id="reqId" name ="reqId" #reqId style="width:120px;height:25px;"  /> 
+                            <button (click)="createFilterData(reqId.value,true,'openingId')" id="reqIdSearch" name="reqIdSearch"> Search </button>
+                         </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="panel">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseseven">
+                          <span class=""> Job Category </span> <span id="jobCatClearDot" name="jobCatClearDot" class="filtered-dot" style="display:none;"></span>
+                       </a>
+                       <a id="jobCatClear" name="jobCatClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('hotJobs')">clear</a>
+                      </h4>
+                    </div>
+                    <div id="collapseseven" class="panel-collapse collapse">
+                      <div class="panel-body" >
+                        
+                        <div class="search-filter-category">
+                                         
+                            <ul class="listing-jobs">
+                               <li *ngFor="let hotJobFilterData of hotJobFilter">
+                                   <span class="radio">
+                                    <label><input type="checkbox" id="jobCat" name ="jobCat" (click)="searchByFilter(hotJobFilterData.job_type,$event,'JobCategory')" [value]="hotJobFilterData.job_type" />
+                                      {{hotJobFilterData.job_type}}</label>                              
+                                  </span>
+                                </li>
+                            </ul>
+    
+                         </div>
+                      
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="panel">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsefive">
+                            <span class="">  Company </span> <span id="compnynameClearDot" name="compnynameClearDot" class="filtered-dot" style="display:none;"></span>
+                          </a>
+                          <a id="compnynameClear" name="compnynameClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('compnyname')">clear</a>
+                        </h4>
+                      </div>
+                      <div id="collapsefive" class="panel-collapse collapse">
+                        <div class="panel-body">
+                         
+                          <div class="search-filter-category">
+                                           
+                              <ul class="listing-jobs">
+                                 <li *ngFor="let jobData of companyFilter">
+                                     <span class="radio">
+                                       <label><input type="checkbox" id="jobData.compnyname" [checked]="check(checkFilterComp,jobData.compnyname)" (click)="searchByFilter(jobData.compnyname,$event,'compnyname')" /> {{jobData.compnyname}}</label>
+                                     </span>
+                                   
+                                  </li>
+                              </ul>
+      
+                           </div>
+      
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                              <span class="">Minimum Salary</span>  <span id="salaryClearDot" name="salaryClearDot" class="filtered-dot" style="display:none;"></span>
+                            </a>
+                            <a id="salaryClear" name="salaryClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('ctcBandLowEnd')">clear</a>
+                          </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                            <div class="search-filter-category">
+                              <div id="range_01" name="range_01" style="width:180px;"></div>
+                              <input type="text" id="salvalmin" name="salvalmin" [value]= "salvalmin" (focus)="createFilterData('searchSalary',true,'ctcBandLowEnd')">
+                              <!-- <input type="text" id="salvalmax" name="salvalmax" [value]= "salvalmax" (focus)="createFilterData('searchSalary',true,'ctcBandLowEnd')"> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        
+                      <div class="panel">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsesix">
+                                <span class="">  Career Stream </span> <span id="crStreamClearDot" name="crStreamClearDot" class="filtered-dot" style="display:none;"></span>
+                             </a>
+                             <a id="crStreamClear" name="crStreamClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('crStreamName')">clear</a>
+                            </h4>
+                          </div>
+                          <div id="collapsesix" class="panel-collapse collapse">
+                            <div class="panel-body" >
+                              
+                              <div class="search-filter-category">
+                                               
+                                  <ul class="listing-jobs">
+                                     <li *ngFor="let careerStreamData of careerStreamfilter">
+                                         <span class="radio">
+                                           <label><input type="checkbox" [checked]="check(checkFilterStream,careerStreamData.crStreamName)" (click)="searchByFilter(careerStreamData.crStreamName,$event,'crStreamName')" /> {{careerStreamData.crStreamName}}</label>
+                                         </span>
+                                       
+                                      </li>
+                                  </ul>
+          
+                               </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+          
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      <span class="">Location</span> <span id="localityClearDot" name="localityClearDot" class="filtered-dot" style="display:none;"></span>
+                   </a>
+                    <a id="localityClear" name="localityClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('address')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body" >
+                     <div class="search-filter-category">
+                                     
+                        <ul class="listing-jobs">
+                           <li *ngFor="let localityData of localityFilter">
+                               <span class="radio">
+                                 <label> <input type="checkbox" (click)="searchByFilter(localityData.address,$event,'address')" /> {{localityData.address}}</label>
+                               </span>
+                             
+                            </li>
+                        </ul>
+
+                     </div>
+                   </div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapsefour">
+                      <span class=""> Job Type </span> <span id="jobTypeClearDot" name="jobTypeClearDot" class="filtered-dot" style="display:none;"></span>
+                    </a>
+                    <a id="jobTypeClear" name="jobTypeClear" style="float:right; display:none; padding: 0px 10px; font-size: 12px;" (click)="clearFilter('employmentType')">clear</a>
+                  </h4>
+                </div>
+                <div id="collapsefour" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    
+                   <div class="search-filter-category">
+                                     
+                        <ul class="listing-jobs">
+                           <li *ngFor="let jobTypeData of jobTypefilter">
+                               <span class="radio">
+                                 <label> <input type="checkbox" (click)="searchByFilter(jobTypeData.employmentType,$event,'employmentType')" /> {{jobTypeData.employmentType}}</label>
+                               </span>
+                             
+                            </li>
+                        </ul>
+
+                     </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9 filtered-view-listing">
+
+          <div id="loader" class="col-md-12" >
+              <p style="text-align:center;"><img class="loading-img" src="assets/frontend-style-script/img/lg.dual-ring-loader.gif" alt="loader"></p>
+          </div>
+
+        <div class="section-header text-center" id="NojobFound" style="display: none;">
+          <h2 class="wow slideInUp title">No Open Requisitions Available</h2>
+        </div>
+
+        <div class="row">
+        
+          <!-- <span *ngIf="company_name" (click)="removefilter()">{{company_name}}</span> -->
+          <div class="col-md-12" *ngFor="let jobData of jobDtlsArr">
+            <div class="panel wow fadeInUp {{jobData['hotjobclass']}}" data-wow-duration=".2s" data-wow-delay=".4s">
+              <div class="panel-heading">
+                  <span *ngIf = "jobData.openPositions > 1 ; else jpositions;">
+                    <h4>{{jobData['openingId']}} - {{jobData['openTitle']}}  <span style="display: inline;font-size: 16px !important;">&nbsp;({{jobData['openPositions']}} Positions)</span></h4>
+                  </span>               
+                  <ng-template #jpositions> 
+                      <h4>{{jobData['openingId']}} - {{jobData['openTitle']}} <h5 style="display: inline;font-size: 16px !important;">&nbsp;({{jobData['openPositions']}} Position)</h5></h4>
+                 </ng-template>               
+              </div>
+              <div class="panel-body">
+
+                <div class="row">
+
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-inr round"></i>
+                    </span>
+                    <span>
+                      <p>{{jobData['ctcCurrency']}}</p>
+                      <p>{{jobData['ctcBandLowEnd']}} - {{jobData['ctcBandHighEnd']}}</p>
+                    </span>
+                  </div>
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-black-tie round"></i>
+                    </span>
+                    <span>
+                      <p>Job Type</p>
+                      <p>{{jobData['employmentType']}}</p>
+                    </span>
+                  </div>
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-building-o round"></i>
+                    </span>
+                    <span>
+                      <p>Company</p>
+                      <p>{{jobData['compnyname']}}</p>
+                    </span>
+                  </div>
+                  <div class="col-md-3 iconic-info">
+                    <span>
+                      <i class="fa fa-clock-o round"></i>
+                    </span>
+                    <span>
+                      <p>Experience</p>
+                      <p>{{jobData['yrsOfExpMin']}} - {{jobData['yrsOfExpMax']}} yrs</p>
+                    </span>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <div class="categories">
+                        <i class="fa fa-user-circle-o gray-light"></i> Career Stream
+                          <span class="subRoles gray-light hidden-xs hidden-sm"> - 
+                              <span>{{jobData['crStreamName']}}</span>
+                          </span>
+                    </div> 
+                    <div class="categories">
+                      <i class="fa fa-map gray-light"></i> Location
+                      <span class="subRoles gray-light hidden-xs hidden-sm"> -
+                        <span> {{jobData['address']}}</span>
+                        <!-- <span>-{{jobData['office']}}</span> -->
+                      </span>
+                    </div>     
+
+                  </div>
+
+                </div>
+
+                <div class="row" style="margin:1px 0px;">
+                  <div class="col-md-8" style="padding-left: 7px;">
+                    <div class="postedBy gray">
+                      <div>Posted by:<strong class="cursor-default" itemprop="hiringOrganization" title="Individual"> {{jobData['coordinator']}}</strong>, <span itemprop="datePosted" class="jsPostedOn"><small>{{jobData['activationDate']}}</small></span>
+                      </div>
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-md-4" *ngIf = "loggedIn">
+                    <button class="btn btn-danger apply-btton pull-right"  target="_blank" (click)="categorizeJob(jobData.jobid);">Categorize Job</button>                    
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="panel-footer" *ngIf = "jobData.job_type_id">
+                 
+                  <ul class="hot-jobs" *ngFor="let jtypedata of jobData['job_type_data']">
+                     <li><label class="badge badge-danger">{{jtypedata[0]}}</label></li>
+                     <li><label>Start Date: {{jtypedata[1]}}</label></li>
+                     <li><label>End Date: {{jtypedata[2]}}</label></li>
+                     <!-- <li><label>Comments: {{jtypedata[4]}}</label></li> -->
+                     <li>
+                       <!-- <i class="fa fa-commenting-o example-pop" tabindex="0" data-toggle="popover" data-placement="left"  title="Comments" [attr.data-content]="jtypedata[4]" style="margin:0px 8px; cursor:pointer;"></i>  -->
+                      <i *ngIf = "loggedIn" class="fa fa-trash" (click)='deleteJobCategory(jobData.jobid,jtypedata[3]);' style="cursor:pointer; float:right;margin: 3px;"></i>
+                      <a class="mybuttonrtr offers-block"  data-toggle="modal" data-target="#exampleModal" (mouseenter)="ShowComment(jtypedata[4],jtypedata[5]);" >{{jtypedata[4]}}</a>               
+                    </li>
+                  </ul>                               
+           </div> 
+
+           <!-- <div class="panel-footer" *ngIf = "jobData.job_type_id">
+            <ul>
+                  <marquee>{{jobData.comment}}</marquee>         
+            </ul> 
+            </div> -->
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /Row2 -->
+
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /feature-details -->
+
+
+<!-- Modal -->
+<button type="button" #openJobCategoryModel id="openJobCategoryModel" style="display:none;" class="btn btn-info btn-lg"
+        data-toggle="modal" data-target="#jobCategoryModel">Open Modal</button>
+<div id="jobCategoryModel" data-backdrop="static" data-keyboard="false" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        
+        <form class="form" role="form" autocomplete="off" id="formJobCategory" novalidate="" style="padding-bottom: 10px" [formGroup]="jobCategoryForm" (submit)='saveJobCategory(jobCategoryForm.value)'>
+            
+            <div class="form-group">
+            <button type="button" class="close" data-dismiss="modal" (click)="resetFormVals();">&times;</button>
+            <h4 style="margin: 20px 7px;text-align: center; line-height: 23px; font-size:18px;">Categorize Job</h4>
+
+              <label for="uname1">Select Job Type : </label>
+              <select id="selJobType" class="form-control" formControlName="selJobType" required="" placeholder="Select Jobtype..." (change)="getSelectedJobTypeData();">
+                   <option value="" [selected]="jobTypeSelected==''">Select JobType</option>
+                   <option *ngFor="let jobCategoryData of jobTypesArr" value="{{jobCategoryData.id}}" [selected]="jobCategoryData.id == jobTypeSelected" >{{jobCategoryData.job_type}}</option>
+              </select>
+               <div *ngIf="selJobType.invalid && selJobType.dirty" class="">
+                <div class="invalid-feedback" *ngIf="selJobType.errors.required"> Job Type Is Required. </div>
+              </div>            
+          </div>
+
+          <div class="form-group form-inline"> 
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd" formControlName="startDate" id="startDate" [value]="startDtSelected" required="" ngbDatepicker #sdt="ngbDatepicker" style="width:85%;" (dateSelect)="onDateSelect($event)" >
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary"  (click)="sdt.toggle()" type="button">
+                    <img src="assets/img/calendar-icon.png" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                </button>  
+              </div>     
+           
+              <div class="invalid-feedback" *ngIf="startDate.touched && startDate.errors?.required"> Start Date Is Required. </div>
+              <!-- <div class="invalid-feedback" *ngIf="startDate.errors?.pattern"> Enter Valid End Date </div> -->
+
+            </div>
+          </div>
+
+        <div class="form-group">
+            <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" formControlName="endDate" id="endDate" [value]="endDateSelected" required="" ngbDatepicker #edt="ngbDatepicker" style="width:85%;">
+          <div class="input-group-append">
+          <button class="btn btn-outline-secondary"  (click)="edt.toggle()" type="button">
+          <img src="assets/img/calendar-icon.png" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+          </button>  
+          </div>
+
+          <div class="invalid-feedback" *ngIf="endDate.touched && endDate.errors?.required"> End Date Is Required. </div>
+          <div *ngIf="date_invalid" class="alert alert-danger">End date should be greater than start date</div>
+          <!-- <div class="invalid-feedback" *ngIf="endDate.errors?.pattern"> Enter Valid End Date </div> -->
+
+
+          <!-- <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">Please Select Valid End Date!</div> -->
+      </div>
+      </div>
+
+      <div class="form-group">   
+        <label for="uname1">Title : </label>
+        <input type="text" id="txtTitle" class="form-control" formControlName="txtTitle" [value]="titleSelected" placeholder="Title">           
+      </div>
+
+      <div class="form-group">   
+          <label for="uname1">Comment : </label>
+          <input type="text" id="txtComment" class="form-control" formControlName="txtComment" [value]="commentSelected" placeholder="Comment">           
+      </div>
+
+          <button type="submit" [disabled]="jobCategoryForm.invalid" class="btn btn-danger" id="btnLogin" style="width:100%; border-radius: 0px; padding: 9px 12px; ">Save</button>
+          
+        </form>
+    
+    
+      </div>
+    
+    </div>
+
+  </div>
+</div>
+
+
+
+	<!-- Modal -->
+  <div class="modal fade top-offers" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 0px solid #e5e5e5;">
+       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:280px;">
+        <h2>{{showTitle}}</h2>
+        <p>{{showComment}} </p>
+      </div>
+      
+      </div>
+    </div>
+    </div>
+
+
+
+
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->

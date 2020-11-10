@@ -1,0 +1,221 @@
+<!-- Header -->
+<header id="how-it-work-page">
+
+  <!-- Nav -->
+  <nav id="nav" class="navbar nav-transparent">
+    <div class="container">
+
+      <div class="navbar-header">
+        <!-- Logo -->
+        <div class="navbar-brand">
+          <a href="index.html">
+            <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+            <img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+          </a>
+        </div>
+        <!-- /Logo -->
+
+        <!-- Collapse nav button -->
+        <div class="nav-collapse">
+          <span></span>
+        </div>
+        <!-- /Collapse nav button -->
+      </div>
+
+      <!--  Main navigation  -->
+      <!-- <ul class="main-nav nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+          <ul class="dropdown" style="position:absolute;">
+            <li><a id="hiwEmp" [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+            <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+          </ul>
+        </li>
+        <li><a [routerLink]="['/about-us']">About</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+        <li *ngIf="loggedIn && usrtype == 'Vendor'"><a (click)="redirectToDashboard()">Dashboard</a></li>
+        <li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+        <ng-template #showLogin>
+          <li> <a [routerLink]="['/login']">Login</a></li>
+        </ng-template>
+        <li *ngIf="loggedIn;" class="username-nav-li"><a style="color:goldenrod;">{{usernm}}({{usrtype}})</a></li>
+
+      </ul> -->
+      <!-- /Main navigation -->
+
+    </div>
+  </nav>
+  <!-- /Nav -->
+
+  <!-- home wrapper -->
+  <div class="home-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="header-banner-heading wow bounce">India’s Largest and Most Advanced Recruitment Marketplace</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+<!-- how it works -->
+<div id="how-it-works" class="section md-padding bg-grey">
+
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="row">
+
+      <!-- Section header -->
+      <div class="section-header text-center">
+        <div class="recruiter-img"><img src="../assets/img/recruiter.gif"></div>
+        <div class="recruiter-text">
+          <p style="padding-top: 120px;padding: 120px 10px 0px 10px"><b>Recruiter on Cloud</b>- India's Largest And Most
+            Advanced Recruitment
+            Marketplace.</p>
+        </div>
+        <p class="plugin">Plug N Play Hiring Solutions for MSME's/Startups</p>
+      </div>
+      <!-- /Section header -->
+
+      <div class="features-sample col-md-12 no-padding" style="margin-top:30px;">
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft"
+            style="height: 150px !important;visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><img src="../assets/img/rupee.png" height="75" width="65"></div>
+            <!--<h4 class="title"><a href=""></a></h4>-->
+            <p class="description blue-border">Sign up-Login-Open Requirement-Get CV's-Interview-Offer</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight"
+            style="height: 150px !important;visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><img src="../assets/img/telescope.png" height="65" width="65"></div>
+            <!--<h4 class="title"><a href="">No need to Empanel</a></h4>-->
+            <p class="description blue-border" style="margin-top:8px;">Hire the candidates 3X Faster within 48 Hours</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInLeft"
+            style="height: 150px !important;visibility: visible; animation-name: fadeInLeft;">
+            <div class="icon"><img src="../assets/img/man.png" height="65" width="65"></div>
+            <!--<h4 class="title"><a href="">No vendor resume processing</a></h4>-->
+            <p class="description blue-border" style="margin-top:8px;">Paperless Onboarding Process</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box wow fadeInRight"
+            style="height: 150px !important;visibility: visible; animation-name: fadeInRight;">
+            <div class="icon"><img src="../assets/img/book.png" height="55" width="55"></div>
+            <!--<h4 class="title"><a href="">No vendor Payment management</a></h4>-->
+            <p class="description blue-border" style="margin-top: 8px;">Access to 1000's of Requirement Partners in few
+              clicks</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-12" style="float:none; margin:auto; text-align:center;">
+
+        <a [routerLink]="['/client']" class="btn btn-lg btn-custom" role="button">Join us now !</a>
+
+      </div>
+      <!--
+      <div class="col-md-12" style="float:none; margin:auto; text-align:center;">
+        <div class="col-md-6" style="text-align:right;">
+          <a [routerLink]="['/client']" class="btn btn-lg btn-custom" role="button">Join us now !</a>
+        </div>
+        <div class="col-md-6" style="text-align:left;">
+          <a [routerLink]="['/login-rock']" class="btn btn-lg btn-custom" role="button">login</a>
+        </div>
+      </div>-->
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /how it works -->
+
+<!-- Portfolio -->
+<div id="short-note" class="section sm-padding">
+  <!-- Background Image -->
+  <div class="bg-img-company-reg wow fadeIn"
+    style="background-image: url('assets/frontend-style-script/img/office-620817_1920.jpg');">
+    <div class="overlay"></div>
+  </div>
+  <!-- /Background Image -->
+  <!-- Container -->
+  <div class="container">
+
+    <!-- Row -->
+    <div class="features-sample row">
+
+      <div class="col-md-12 short-note-works wow flipInX" data-wow-delay=".7s">
+        <h3 class="bark-bg-heading">Emagine screens and shortlist only the relevant resumes for you!</h3>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+          <div class="icon"><i class="fa fa-map-marker"></i></div>
+          <h4 class="title"><a href="">- Vendors across 1000+ pincodes</a></h4>
+          <p class="description">Looking for recruitment vendor partners from a particular region to work on your
+            profile? Don’t worry !!!We have Pan India vendor base across every possible region.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="box wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+          <div class="icon"><i class="fa fa-briefcase"></i></div>
+          <h4 class="title"><a href="">- Hires across levels and industries</a></h4>
+          <p class="description">Looking to hire for Mid Level? or Junior level? No Worries!!! We fulfill requirements
+            across levels in every possible industry. </p>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- /Row -->
+
+  </div>
+  <!-- /Container -->
+
+</div>
+<!-- /short-note -->
+
+<!-- <div id="testimonal"><p class="plugin" style="font-size:400;font-weight:900;">Space For Testimonal</p></div> -->
+
+<div id="offer-reward" style="margin-top: 20px;">
+  <marquee>
+    <div class="offer-placement">
+      <div class="offer-placement-pic"><img src="../assets/img/1-4.png" height="200" width="220"></div>
+      <p>Hire 4 and Get 1 Placement free</p>
+    </div>
+    <div class="offer-placement">
+      <div class="offer-placement-pic"><img src="../assets/img/2-4.png" height="200" width="160"></div>
+      <p>Refer a Client - Get 5k off on <br>First 3 Jobs Closed</p>
+    </div>
+    <div class="offer-placement">
+      <div class="offer-placement-pic"><img src="../assets/img/3-4.png" height="200" width="220"></div>
+      <p>Get 5k redeemable Voucher on <br>Every 3rd Hire</p>
+    </div>
+    <div class="offer-placement">
+      <div class="offer-placement-pic"> <img src="../assets/img/4-4.png" height="200"></div>
+      <p>Get Free Assessment worth 2k Each on <br>First 5 Hires</p>
+    </div>
+  </marquee>
+</div>
+
+<!-- Back to top -->
+<div id="back-to-top"></div>

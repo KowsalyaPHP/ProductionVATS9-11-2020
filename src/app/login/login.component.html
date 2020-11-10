@@ -1,0 +1,231 @@
+<!-- Header -->
+<header id="login-page">
+
+    <!-- fog -->
+    <div id="foglayer_01" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+    </div>
+    <div id="foglayer_02" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+    </div>
+    <div id="foglayer_03" class="fog">
+        <div class="image01"></div>
+        <div class="image02"></div>
+    </div>
+    <!-- fog -->
+
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+        <div class="container">
+
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <img class="logo" src="assets/frontend-style-script/img/logo.png" alt="logo">
+                        <img class="logo-alt" src="assets/frontend-style-script/img/logo-white.png" alt="logo">
+                    </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Collapse nav button -->
+                <div class="nav-collapse">
+                    <span></span>
+                </div>
+                <!-- /Collapse nav button -->
+            </div>
+
+            <!--  Main navigation  -->
+            <ul class="main-nav nav navbar-nav navbar-right">
+                <li><a [routerLink]="['/']">Home</a></li>
+                <li class="has-dropdown"><a href="javascript:void(0);">How it works</a>
+                    <ul class="dropdown" style="position:absolute;">
+                        <li><a [routerLink]="['/hiw-Employer']">Employers/ Corporates/ Companies</a></li>
+                        <li><a [routerLink]="['/hiw-partners']">Partners/ Consultants/ Agencies</a></li>
+                    </ul>
+                </li>
+
+                <li><a [routerLink]="['/about-us']">About</a></li>
+                <li><a [routerLink]="['/contact']">Contact</a></li>
+                <li *ngIf="loggedIn && usrtype == 'Admin'"><a [routerLink]="['/app-registration-list']">Admin</a></li>
+                <li *ngIf="loggedIn ; else showLogin;"><a [routerLink]="['/logout']">Logout</a></li>
+                <ng-template #showLogin>
+                    <li> <a [routerLink]="['/login']">Login</a></li>
+                </ng-template>
+            </ul>
+            <!-- /Main navigation -->
+
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+        <div class="container moving-icons">
+
+            <!--Animated Icons for background-->
+            <!-- <img src="assets/frontend-style-script/img/shape1.svg" alt="" class="object1 rotate"> 
+                <img src="assets/frontend-style-script/img/shape2.svg" alt="" class="object2 rotate2"> 
+                <img src="assets/frontend-style-script/img/shape3.svg" alt="" class="object3 rotate"> 
+                <img src="assets/frontend-style-script/img/shape4.svg" alt="" class="object4 bounce bounce1"> 
+                <img src="assets/frontend-style-script/img/shape5.svg" alt="" class="object5 bounce bounce2"> 
+                <img src="assets/frontend-style-script/img/shape6.svg" alt="" class="object6 bounce bounce3"> 
+                <img src="assets/frontend-style-script/img/shape7.svg" alt="" class="object7 bounce bounce4"> 
+                <img src="assets/frontend-style-script/img/shape8.svg" alt="" class="object8 bounce bounce5"> -->
+
+
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12" style="float:none; margin:auto; clear:both;">
+                    <h2 class="header-banner-heading">&nbsp;</h2>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12" style="float:none; margin:auto; clear:both;">
+                    <div class="card rounded-0 login-form effect2">
+                        <div class="card-header">
+                            <h3 class="mb-0" style="margin-top:0px; font-weight:bold;">Login</h3>
+                        </div>
+
+                        <!-- <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback dispErr" >Please Enter Correct Username/Password.</div> -->
+
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" id="formLogin" novalidate=""
+                                style="padding-bottom: 10px" [formGroup]="loginForm"
+                                (submit)='validateLoginDetails(loginForm.value)'>
+                                <div class="form-group">
+                                    <label for="uname1">User Type</label>
+
+
+                                    <select id="loginAs" class="form-control" name="loginAs" formControlName="loginAs"
+                                        #loginAs required="" style="width:315px;"
+                                        (change)="redirectToMNH(loginAs.value);">
+                                        <option value='' selected="selected">Select Type</option>
+                                        <option value="Rock Client">RoCk Client</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Vendor">Vendor</option>
+                                        <option value="Employer">Employer</option>
+                                    </select>
+
+                                    <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">
+                                        Please Select Correct User Type.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname1">User Name</label>
+                                    <input type="text" placeholder="User Name"
+                                        class="form-control form-control-lg rounded-0" formControlName="username"
+                                        id="username" required="">
+                                    <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">
+                                        Please Enter Correct Username/Password.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" placeholder="password"
+                                        class="form-control form-control-lg rounded-0" id="password"
+                                        formControlName="password" required="" autocomplete="new-password">
+                                    <div id="dispErr" name="dispErr" [style.display]="dispVar" class="invalid-feedback">
+                                        Please Enter Correct Username/Password.!</div>
+                                </div>
+
+                                <!-- <a href="job-listing.html" class="btn btn-info btn-lg" id="" style="width:100%;">Login</a> -->
+                                <button type="submit" class="btn btn-danger" id="btnLogin"
+                                    style="width:100%; border-radius: 0px; padding: 9px 12px; ">Login</button>
+
+                                <p class="other" id="gotoRemind" style="margin:8px 0px; text-align:center;">
+                                    <a data-toggle="modal" data-target="#ForgotPassword" style="font-size:13px;">Forgot
+                                        your password? </a>
+                                </p>
+
+                                <p class="newtoscrp" style="text-align:center">New to Emagine?
+                                    <a class="loginbuttonsset" data-toggle="modal" data-target="#signup-option"
+                                        style="cursor:pointer;">Signup</a>
+                                </p>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /home wrapper -->
+
+</header>
+<!-- /Header -->
+
+
+<!-- Modal -->
+<div id="signup-option" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h3 style="margin: 38px 7px;text-align: center; line-height: 23px; font-size:18px;">JOIN THE MOST
+                    ADVANCED RECRUITMENT MARKETPLACE</h3>
+                <p style="text-align: center;"><a (click)="clientRegistration()" class="btn btn-danger btn-lg"
+                        style="border-radius:0px; background-color: #FF7F26;" data-dismiss="modal">Sign Up as RoCk
+                        Client</a></p>
+                <p style="text-align: center;"><a (click)="employerRegistration()" class="btn btn-danger btn-lg"
+                        style="border-radius:0px;" data-dismiss="modal">Sign Up as Employer</a></p>
+                <p style="text-align: center; margin-bottom:30px;"><a (click)="recruiterRegistration()"
+                        class="btn btn-danger btn-lg" style="border-radius:0px;" data-dismiss="modal">Sign Up as
+                        Recruiter</a></p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Forgot Password Model -->
+<div id="ForgotPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width:368px; margin:100px auto;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form class="form" role="form" autocomplete="off" id="formForgotPassword" name="formForgotPassword"
+                    style="padding-bottom: 10px" [formGroup]="forgotPasswordForm"
+                    (submit)='SendForgotPasswordMail(forgotPasswordForm.value)'>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 style="margin: 38px 7px;text-align: center; line-height: 23px; font-size:18px;">Forgot Password?
+                    </h3>
+
+                    <select id="loginType" name="loginType" class="form-control" formControlName="loginType" #loginType
+                        required="" style="width:315px;">
+                        <option value='' selected="selected">Select Type</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Vendor">Vendor</option>
+                    </select>
+                    <br>
+                    <input type="text" formControlName="forgotPasswordmail" id="forgotPasswordmail"
+                        name="forgotPasswordmail" placeholder="e-mail address"
+                        class="form-control form-control-lg rounded-0" required="">
+                    <div *ngIf="forgotPasswordmail.invalid && (forgotPasswordmail.dirty || forgotPasswordmail.touched)">
+                        <div class="invalid-feedback" *ngIf="forgotPasswordmail.errors.required"> Email Is Required.
+                        </div>
+                        <div class="invalid-feedback" *ngIf="forgotPasswordmail.errors?.pattern"> Enter Valid Email
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" [disabled]="forgotPasswordForm.invalid" class="btn btn-danger" id="btnLogin"
+                        style="width:100%; border-radius: 0px; padding: 9px 12px; ">Send Mail</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

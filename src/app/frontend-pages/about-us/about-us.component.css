@@ -1,0 +1,49 @@
+
+.adjust-background{
+    padding:15px 0px;
+    text-align:center;
+}
+.feature-list-items .feature-icon-list-item {
+    text-indent: -17px;
+}
+
+ul.feature-list-items{
+    margin-left: 34px;
+}
+
+.bg-img-company-reg {
+    position: absolute;
+    /*left: 0;*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+	width:100%;
+    background-position: center;
+    background-size: contain;
+    background-attachment: scroll;
+}
+
+.bg-img-company-reg .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .6;
+    background: #2a3644;
+}
+
+.short-note-works p {
+    color: #ffffff;
+    font-family: "Open Sans", Sans-serif !important;
+    font-size: 43px;
+    font-weight: 500;
+    line-height: 50px;
+    margin: 40px auto !important;
+    text-align: center;
+}
+
+.tm-img{
+    height: 300px;
+}
