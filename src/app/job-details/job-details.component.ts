@@ -612,7 +612,7 @@ export class JobDetailsComponent implements OnInit {
 
       if(reqsource == "V"){
 
-        var redirectLink = "https://emaginerock.com/jobdescription/" + this.reqid + "/" + sourceid;
+        var redirectLink = "https://dev.emaginerock.com/jobdescription/" + this.reqid + "/" + sourceid;
         window.open(redirectLink, '_blank');
       }
       else{
