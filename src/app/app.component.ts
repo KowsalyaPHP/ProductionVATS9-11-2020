@@ -8,7 +8,8 @@ import { Router, NavigationStart, NavigationEnd, Event as NavigationEvent ,Navig
 export class AppComponent implements OnInit {
   title = 'app';
   // production server
-  public static urlPath = "http://demo.emagine.co.in/emagine_services_demo/";
+ // public static urlPath = "http://demo.emagine.co.in/emagine_services_demo/";
+  public static urlPath = "https://emagine.co.in/emagine_services/";
 
   //for testing purpose local/test server
   //public static urlPath = "http://localhost/RecruitmentProject/";
